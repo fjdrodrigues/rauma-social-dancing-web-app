@@ -1,33 +1,55 @@
-<nav class="navbar navbar-expand-md navbar-light bg-dark">
+<nav class="navbar navbar-expand-md navbar-dark navbar-static-top adk-navbar">
   <a class="navbar-brand" routerLink="/" routerLinkActive="active">Amor d'Kizomba</a>
-  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+  <button class="navbar-toggler navbar-toggler-right"
+          type="button" data-toggle="collapse"
+          data-target="#navbarToggleExternalContent"
+          aria-controls="navbarToggleExternalContent"
+          aria-expanded="false" aria-label="Toggle navigation"
+          (click)="toggleCollapsed()">
 	<span class="navbar-toggler-icon"></span>
   </button>
 
-  <div class="collapse navbar-collapse" id="navbarResponsive">
-		<ul class="navbar-nav ml-auto my-2 my-lg-0">
-			<li class="nav-item active">
-			<a class="nav-link" routerLink="/" routerLinkActive="active">Amor d'Kizomba</a>
-			</li>
+  <div class="collapse navbar-collapse" id="navbarToggleExternalContent" [ngbCollapse]="isCollapsed">
+		<ul class="nav navbar-nav ml-auto my-2 my-lg-0">
+			<li class="nav-item dropdown">
+				<a class="nav-link dropbtn" routerLink="/" routerLinkActive="active">Home</a>
+				<div class="dropdown-content" aria-labelledby="homeDropdown">
+					<a class="dropdown-item" routerLink="/origin" routerLinkActive="active">Origin</a>
+					<a class="dropdown-item" routerLink="/goal" routerLinkActive="active" ngbDropdownItem>Goal</a>
+					<a class="dropdown-item" routerLink="/people" routerLinkActive="active" ngbDropdownItem>People</a>
+					<a class="dropdown-item" routerLink="/inspiration" routerLinkActive="active" ngbDropdownItem>Inspiration</a>
+				</div>
+      </li>
+      <li class="nav-item dropdown" ngbDropdown>
+          <a class="nav-link dropbtn" routerLink="/activities" routerLinkActive="active">Activities</a>
+          <div class="dropdown-menu dropdown-content" aria-labelledby="actvitiesDropdown" ngbDropdownMenu>
+            <a class="dropdown-item" routerLink="/activities/next" routerLinkActive="active" ngbDropdownItem>Coming Up</a>
+            <a class="dropdown-item" routerLink="/activities/classes" routerLinkActive="active" ngbDropdownItem>Classes</a>
+            <a class="dropdown-item" routerLink="/activities/workshops" routerLinkActive="active" ngbDropdownItem>Workshops</a>
+            <a class="dropdown-item" routerLink="/activities/parties" routerLinkActive="active" ngbDropdownItem>Parties</a>
+            <a class="dropdown-item" routerLink="/activities/special" routerLinkActive="active" ngbDropdownItem>Special Events</a>
+            <a class="dropdown-item" routerLink="/activities/past" routerLinkActive="active" ngbDropdownItem>Past</a>
+          </div>
+        </li>
 			<li class="nav-item dropdown" ngbDropdown>
-				<a class="nav-link" routerLink="/dance" routerLinkActive="active">Dance</a>
-				<a class="dropdown-toggle" id="danceDropdown" ngbDropdownToggle></a>
-				<!--<a class="nav-link dropdown-toggle" id="danceDropdown" routerLink="/dance" routerLinkActive="active" ngbDropdownToggle>Dance</a>-->
-				<div class="dropdown-menu" aria-labelledby="danceDropdown" ngbDropdownMenu>
+				<a class="nav-link dropbtn" routerLink="/dance" routerLinkActive="active">Dance</a>
+				<div class="dropdown-menu dropdown-content" aria-labelledby="danceDropdown" ngbDropdownMenu>
 					<a class="dropdown-item" routerLink="/dance/kizomba" routerLinkActive="active" ngbDropdownItem>Kizomba</a>
-					<a class="dropdown-item" routerLink="/dance/kuduro" routerLinkActive="active" ngbDropdownItem>Kuduro</a>
 					<a class="dropdown-item" routerLink="/dance/semba" routerLinkActive="active" ngbDropdownItem>Semba</a>
+          <a class="dropdown-item" routerLink="/dance/influences" routerLinkActive="active" ngbDropdownItem>Influences</a>       
 				</div>
 			</li>
 			<li class="nav-item dropdown" ngbDropdown>
-				<a class="nav-link" routerLink="/health" routerLinkActive="active">Health</a>
-				<a class="dropdown-toggle" id="danceDropdown" ngbDropdownToggle></a>
-				<!--<a class="nav-link dropdown-toggle" id="healthDropdown" routerLink="/health" routerLinkActive="active"  ngbDropdownToggle>Health</a>-->
-				<div class="dropdown-menu" aria-labelledby="healthDropdown" ngbDropdownMenu>
-					<a class="dropdown-item" routerLink="/health/body" routerLinkActive="active" ngbDropdownItem>Body</a>
-					<a class="dropdown-item" routerLink="/health/mind" routerLinkActive="active" ngbDropdownItem>Mind</a>
+				<a class="nav-link dropbtn" routerLink="/extras" routerLinkActive="active">Extras</a>
+				<div class="dropdown-menu dropdown-content" aria-labelledby="extasDropdown" ngbDropdownMenu>
+					<a class="dropdown-item" routerLink="/extras/health" routerLinkActive="active" ngbDropdownItem>Health</a>
+					<a class="dropdown-item" routerLink="/extras/philosophy" routerLinkActive="active" ngbDropdownItem>Philosophy</a>
+					<a class="dropdown-item" routerLink="/extras/gallery" routerLinkActive="active" ngbDropdownItem>Gallery</a>
 				</div>
-			</li>
+      </li>
+      <li class="nav-item" ngbDropdown>
+        <a class="nav-link" routerLink="/contacts" routerLinkActive="active">Contacts</a>
+      </li>
 		</ul>
   </div>
 </nav>

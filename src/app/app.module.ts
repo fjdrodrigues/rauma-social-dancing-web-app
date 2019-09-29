@@ -1,12 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from  '@angular/forms';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { environment } from './../environments/environment';
+import { environment } from '../environments/environment';
 
 import { AppNavbarComponent } from './app-navbar/app-navbar.component';
 import { AppLeftPaneComponent } from './app-leftpane/app-leftpane.component';
@@ -38,6 +38,9 @@ import { SharedModule } from './components/shared/shared.module';
 		SharedModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [
+      CUSTOM_ELEMENTS_SCHEMA
+  ]
 })
 export class AppModule { }

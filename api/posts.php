@@ -2,28 +2,24 @@
 /**
  * REST API Methods for Posts.
  */
-require '../connector.php';
-
-if(!$_SESSION['user_id']) {
-	return http_response_code(400);
-}
+require './connector.php';
 
 // get the HTTP method, path and body of the request
 $method = $_SERVER['REQUEST_METHOD'];
-$request = explode('/', trim($_SERVER['PATH_INFO'],'/'));
+parse_str($_SERVER['QUERY_STRING'], $request);
 $input = file_get_contents('php://input');
 $decodedinput = json_decode($input,true);
 
 // function based on HTTP method
 switch ($method) {
   case 'GET':
-		if(isset($request->id) && !empty($request->id)) {
+		if(isset($request['id']) && !empty($request['id'])) {
 			// Validate.
-			if((int)$request->id < 1) {
+			if((int)$request['id'] < 1) {
 				return http_response_code(400);
 			}
 			// Sanitize
-			$id = mysqli_real_escape_string($con, (int)$request->id);
+			$id = mysqli_real_escape_string($con, (int)$request['id']);
 			// SQL
 			$sql = "SELECT * FROM posts WHERE id = '{$id}' LIMIT 1";
 			//create
@@ -39,13 +35,13 @@ switch ($method) {
 			}else {
 				http_response_code(404);
 			}
-		}elseif(isset($request->category) && !empty($request->category)) {
+		}elseif(isset($request['category']) && !empty($request['category'])) {
 			// Validate.
-			if($request->category === '') {
+			if($request['category'] === '') {
 				return http_response_code(400);
 			}
 			// Sanitize
-			$category = mysqli_real_escape_string($con, $request->category);
+			$category = mysqli_real_escape_string($con, $request['category']);
 			// SQL
 			$sql = "SELECT * FROM posts WHERE category = '{$category}'";
 			//create
@@ -88,6 +84,9 @@ switch ($method) {
 		}
 		break;
   case 'PUT':
+		if(!$_SESSION['user_id']) {
+			return http_response_code(400);
+		}
 		if(isset($input) && !empty($input)) {
 			// Validate.
 			if((int)$decodedinput->id < 1 || $decodedinput->title === '') {
@@ -124,6 +123,9 @@ switch ($method) {
 		}
 		break;
   case 'POST':
+		if(!$_SESSION['user_id']) {
+			return http_response_code(400);
+		}
 		if(isset($input) && !empty($input)) {
 			// Validate.
 			if((int)$decodedinput->id < 1 || $decodedinput->title === '') {
@@ -142,18 +144,22 @@ switch ($method) {
 				http_response_code(201);
 			}else {
 				http_response_code(404);
+			}
 		}else {
 			http_response_code(404);
 		}
 		break;
   case 'DELETE':
-		if(isset($input) && !empty($input)) {
+		if(!$_SESSION['user_id']) {
+			return http_response_code(400);
+		}
+		if(isset($request['id']) && !empty($request['id'])) {
 			// Validate.
-			if((int)$request->id < 1) {
+			if((int)$request['id'] < 1) {
 				return http_response_code(400);
 			}
 			// Sanitize
-			$id = mysqli_real_escape_string($con, (int)$request->id);
+			$id = mysqli_real_escape_string($con, (int)$request['id']);
 			// SQL
 			$sql = "DELETE FROM `posts` WHERE `id` ='{$id}' LIMIT 1";
 			//create
@@ -161,6 +167,7 @@ switch ($method) {
 				http_response_code(201);
 			}else {
 				http_response_code(404);
+			}
 		}else {
 			http_response_code(404);
 		}
