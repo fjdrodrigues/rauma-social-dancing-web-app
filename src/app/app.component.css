@@ -1,0 +1,10 @@
+.main-container {
+	height: 100%;
+	width: 100%;
+	position: relative;
+}
+.main-row {
+	display: flex;
+	height: 100vh;
+	width: 100%;
+}

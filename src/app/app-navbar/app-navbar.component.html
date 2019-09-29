@@ -1,32 +1,33 @@
-<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-  <a class="navbar-brand" href="#">Navbar</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+<nav class="navbar navbar-expand-md navbar-light bg-dark">
+  <a class="navbar-brand" routerLink="/" routerLinkActive="active">Amor d'Kizomba</a>
+  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
 	<span class="navbar-toggler-icon"></span>
   </button>
 
-  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-	<ul class="navbar-nav mr-auto">
-	  <li class="nav-item active">
-		<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-	  </li>
-	  <li class="nav-item">
-		<a class="nav-link" href="#">Link</a>
-	  </li>
-	  <li class="nav-item">
-		<a class="nav-link disabled" href="#">Disabled</a>
-	  </li>
-	  <li class="nav-item dropdown" ngbDropdown>
-		<a class="nav-link dropdown-toggle" id="dropdown01" ngbDropdownToggle>Category</a>
-		<div class="dropdown-menu" aria-labelledby="dropdown01" ngbDropdownMenu>
-		  <a class="dropdown-item" href="#" ngbDropdownItem>Angular</a>
-		  <a class="dropdown-item" href="#" ngbDropdownItem>React</a>
-		  <a class="dropdown-item" href="#" ngbDropdownItem>Vue.js</a>
-		</div>
-	  </li>
-	</ul>
-	<form class="form-inline my-2 my-lg-0">
-	  <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-	  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-	</form>
+  <div class="collapse navbar-collapse" id="navbarResponsive">
+		<ul class="navbar-nav ml-auto my-2 my-lg-0">
+			<li class="nav-item active">
+			<a class="nav-link" routerLink="/" routerLinkActive="active">Amor d'Kizomba</a>
+			</li>
+			<li class="nav-item dropdown" ngbDropdown>
+				<a class="nav-link" routerLink="/dance" routerLinkActive="active">Dance</a>
+				<a class="dropdown-toggle" id="danceDropdown" ngbDropdownToggle></a>
+				<!--<a class="nav-link dropdown-toggle" id="danceDropdown" routerLink="/dance" routerLinkActive="active" ngbDropdownToggle>Dance</a>-->
+				<div class="dropdown-menu" aria-labelledby="danceDropdown" ngbDropdownMenu>
+					<a class="dropdown-item" routerLink="/dance/kizomba" routerLinkActive="active" ngbDropdownItem>Kizomba</a>
+					<a class="dropdown-item" routerLink="/dance/kuduro" routerLinkActive="active" ngbDropdownItem>Kuduro</a>
+					<a class="dropdown-item" routerLink="/dance/semba" routerLinkActive="active" ngbDropdownItem>Semba</a>
+				</div>
+			</li>
+			<li class="nav-item dropdown" ngbDropdown>
+				<a class="nav-link" routerLink="/health" routerLinkActive="active">Health</a>
+				<a class="dropdown-toggle" id="danceDropdown" ngbDropdownToggle></a>
+				<!--<a class="nav-link dropdown-toggle" id="healthDropdown" routerLink="/health" routerLinkActive="active"  ngbDropdownToggle>Health</a>-->
+				<div class="dropdown-menu" aria-labelledby="healthDropdown" ngbDropdownMenu>
+					<a class="dropdown-item" routerLink="/health/body" routerLinkActive="active" ngbDropdownItem>Body</a>
+					<a class="dropdown-item" routerLink="/health/mind" routerLinkActive="active" ngbDropdownItem>Mind</a>
+				</div>
+			</li>
+		</ul>
   </div>
 </nav>

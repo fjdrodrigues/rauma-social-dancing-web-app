@@ -6,6 +6,15 @@ yarn-debug.log*
 yarn-error.log*
 firebase-debug.log*
 
+#Angular build
+/frontend
+
+#Firebase
+/firebase
+
+#SQL
+/sql
+
 # Firebase cache
 .firebase/
 
