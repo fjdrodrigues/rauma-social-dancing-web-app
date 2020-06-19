@@ -14,6 +14,7 @@ import { Post } from '../../../domain/post.model';
 export class KizombaDanceComponent extends BasePostComponent implements OnInit {
 	
 	public posts: Post[];
+	public post: Post;
 	private category = "kizomba";
 	
   constructor(protected postService: PostService) {
@@ -21,8 +22,11 @@ export class KizombaDanceComponent extends BasePostComponent implements OnInit {
   }
 	
 	ngOnInit() {
-		this.postService.getAllFromCategory(this.category).subscribe((posts: Post[]) => {
+		/*this.postService.getAllFromCategory(this.category).subscribe((posts: Post[]) => {
 				this.posts = posts;
-			});
+			});*/
+		this.postService.testPost(1).subscribe((post: Post) => {
+			this.post = post;
+		});
 	}
 }

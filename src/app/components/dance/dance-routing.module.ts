@@ -7,9 +7,9 @@ import { SembaDanceComponent } from './semba/semba-dance.component';
 import { KuduroDanceComponent } from './kuduro/kuduro-dance.component';
 
 export const danceRoutes: Routes = [
-  {
-    path: 'dance',
-    component: DanceComponent
+	{
+		path: 'dance',
+		component: DanceComponent
 	},
 	{
 		path: 'dance/kizomba',

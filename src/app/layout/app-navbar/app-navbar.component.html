@@ -1,0 +1,91 @@
+<nav class="navbar navbar-expand-sm fixed-top adk-navbar">
+  <a class="navbar-brand" routerLink="/" routerLinkActive="active" (click)="isCollapsed = true">Amor d'Kizomba</a>
+  <button class="navbar-toggler navbar-toggler-right"
+          type="button" data-toggle="collapse"
+          data-target="#navbarToggleExternalContent"
+          aria-controls="navbarToggleExternalContent"
+          aria-expanded="false" aria-label="Toggle navigation"
+          (click)="toggleCollapsed()">
+    <div class="navbar-dark">
+      <span class="navbar-toggler-icon"></span>
+    </div>
+  </button>
+
+  <div class="navbar-collapse collapse text-right" id="navbarToggleExternalContent" [ngbCollapse]="isCollapsed">
+    <ul class="nav navbar-nav ml-auto my-0">
+      <li class="nav-item">
+        <div ngbDropdown #aboutDrop="ngbDropdown">
+          <a class="nav-link" id="aboutDropdown" ngbDropdownToggle>About</a>
+          <div class="dropdown-menu" aria-labelledby="aboutDropdown" ngbDropdownMenu #aboutMenu>
+            <a class="dropdown-item" routerLink="/origin" routerLinkActive="active" ngbDropdownItem
+              (click)="closeDropdown(aboutMenu);closeCollapsed()">Origin</a>
+            <a class="dropdown-item" routerLink="/goal" routerLinkActive="active" ngbDropdownItem 
+              (click)="closeDropdown(aboutMenu);closeCollapsed()">Goal</a>
+            <a class="dropdown-item" routerLink="/people" routerLinkActive="active" ngbDropdownItem 
+              (click)="closeDropdown(aboutMenu);closeCollapsed()">People</a>
+            <a class="dropdown-item" routerLink="/inspiration" routerLinkActive="active" ngbDropdownItem 
+              (click)="closeDropdown(aboutMenu);closeCollapsed()">Inspiration</a>
+          </div>
+        </div>
+      </li>
+      <li class="nav-item">
+        <div ngbDropdown #eventsDrop="ngbDropdown">
+          <a class="nav-link" id="eventsDropdown" ngbDropdownToggle>Events</a>
+          <div class="dropdown-menu" aria-labelledby="eventsDropdown" ngbDropdownMenu #eventsMenu>
+            <a class="dropdown-item" routerLink="/events/next" routerLinkActive="active" ngbDropdownItem 
+              (click)="closeDropdown(eventsMenu);closeCollapsed()">Coming Up</a>
+            <a class="dropdown-item" routerLink="/events/classes" routerLinkActive="active" ngbDropdownItem 
+              (click)="closeDropdown(eventsMenu);closeCollapsed()">Classes</a>
+            <a class="dropdown-item" routerLink="/events/workshops" routerLinkActive="active" ngbDropdownItem 
+              (click)="closeDropdown(eventsMenu);closeCollapsed()">Workshops</a>
+            <a class="dropdown-item" routerLink="/events/parties" routerLinkActive="active" ngbDropdownItem 
+              (click)="closeDropdown(eventsMenu);closeCollapsed()">Parties</a>
+            <a class="dropdown-item" routerLink="/events/special" routerLinkActive="active" ngbDropdownItem 
+              (click)="closeDropdown(eventsMenu);closeCollapsed()">Special Events</a>
+            <a class="dropdown-item" routerLink="/events/past" routerLinkActive="active" ngbDropdownItem 
+              (click)="closeDropdown(lifestyleMenu);closeCollapsed()">Past</a>
+          </div>
+        </div>
+      </li>
+      <li class="nav-item">
+        <div ngbDropdown #danceDrop="ngbDropdown">
+          <a class="nav-link" id="danceDropdown" ngbDropdownToggle>Dance</a>
+          <div class="dropdown-menu" aria-labelledby="danceDropdown" ngbDropdownMenu #danceMenu>
+            <a class="dropdown-item" routerLink="/dance/kizomba" routerLinkActive="active" ngbDropdownItem 
+              (click)="closeDropdown(danceMenu);closeCollapsed()">Kizomba</a>
+            <a class="dropdown-item" routerLink="/dance/semba" routerLinkActive="active" ngbDropdownItem 
+              (click)="closeDropdown(danceMenu);closeCollapsed()">Semba</a>
+            <a class="dropdown-item" routerLink="/dance/kuduro" routerLinkActive="active" ngbDropdownItem 
+              (click)="closeDropdown(danceMenu);closeCollapsed()">Kuduro</a>
+            <a class="dropdown-item" routerLink="/dance/influences" routerLinkActive="active" ngbDropdownItem 
+              (click)="closeDropdown(danceMenu);closeCollapsed()">Influences</a>
+          </div>
+        </div>
+      </li>
+      <li class="nav-item">
+        <div ngbDropdown #lifestyleDrop="ngbDropdown">
+          <a class="nav-link" id="lifestyleDropdown" ngbDropdownToggle>Lifestyle</a>
+          <div class="dropdown-menu" aria-labelledby="lifestyleDropdown" ngbDropdownMenu #lifestyleMenu>
+            <a class="dropdown-item" routerLink="/extras/health" routerLinkActive="active" ngbDropdownItem 
+              (click)="closeDropdown(lifestyleMenu);closeCollapsed()">Health</a>
+            <a class="dropdown-item" routerLink="/extras/philosophy" routerLinkActive="active" ngbDropdownItem 
+              (click)="closeDropdown(lifestyleMenu);closeCollapsed()">Philosophy</a>
+            <a class="dropdown-item" routerLink="/extras/gallery" routerLinkActive="active" ngbDropdownItem 
+              (click)="closeDropdown(lifestyleMenu);closeCollapsed()">Gallery</a>
+          </div>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/contacts" routerLinkActive="active"
+          (click)="closeCollapsed()">Contacts</a>
+      </li>
+      <li *adkHasAnyRole="'admin'"
+        class="nav-item logout">
+        <a class="nav-link logout"
+          (click)="logout()">
+          <i class="fa fa-sign-out" aria-hidden="true"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>

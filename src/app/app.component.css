@@ -1,17 +1,9 @@
 .main-container {
   position: relative;
-  height: 100%;
-  padding: 0;
-}
-.main-row {
-	display: flex;
-	height: 100%;
+  padding: 2.5rem 0 2.5rem 0;
   width: 100%;
+  min-height: 100vh;
+  margin-right: auto;
+  margin-left: auto;
 }
 
-.sidenav {
-	background-color: aliceblue;
-}
-.main-content {
-	background-color: white;
-}

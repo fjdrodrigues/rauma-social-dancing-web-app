@@ -1,6 +1,45 @@
 # amordkizomba.github.io
 Amor d' Kizomba - Web App
 
+# Frontend
+# Install Node JS
+Download & Install
+# Install Angular
+ - npm install -g @angular/cli
+ - cd ~/amordkizomba
+ - run npm install
+
+# Backend
+# Install MySQL 5.7
+Download & Install
+# Install Apache 2.4
+ - Download httpd-2.4.41-win64-VS16.zip from https://www.apachelounge.com/download/
+ - Extract Apache24 to C:\
+ - Download & Install vc_redist_x64 from https://www.apachelounge.com/download/
+ - cd C:\Apache24\bin
+ - httpd.exe -k install
+ - Edit httpd.conf:
+    LoadModule rewrite_module modules/mod_rewrite.so
+# Install PHP 7
+ - Download ZIP file and extract to C:\php7.1
+ - Copy C:\php7.1\php.ini-development to C:\php7.1\php.ini
+ - extension_dir = "ext"
+ - Remove semicolon in Extensions:
+extension=php_curl.dll
+extension=php_gd2.dll
+extension=php_mbstring.dll
+extension=php_mysqli.dll
+extension=php_pdo_mysql.dll
+extension=php_xmlrpc.dll
+ - Add C:\%php% to environment variables
+ - Stop Apache2.4
+ - Edit httpd.conf in C:\Apache24\conf. Line 285 to DirectoryIndex index.php index.html
+ - Add at the end of the file:
+    # PHP7 module
+    LoadModule php7_module "C:/php7.1/php7apache2_4.dll"
+    AddType application/x-httpd-php .php
+    PHPIniDir "C:/php7.1"
+
 # Amordkizomba
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.4.

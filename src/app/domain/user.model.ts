@@ -1,14 +1,14 @@
-enum UserType {
-	admin,
-	user
+export enum UserType {
+	admin = 'admin',
+	user = 'user'
 }
 
-export class User {
+export interface User {
 	id: number;
 	username: string;
+	password?: string;
 	firstName: string;
 	lastName: string;
-	birthdate: Date;
+	birthDate: Date;
 	userType: UserType;
-	creationDate: Date;
 }

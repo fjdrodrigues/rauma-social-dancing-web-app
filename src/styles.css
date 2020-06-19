@@ -1,20 +1,53 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~bootstrap/dist/css/bootstrap.css";
-
-html {
-  height: 100%;
-  width: 100%;
-}
-
-body {
-  height: 100%;
-  width: 100%;
-  min-height: 2000px;
-  padding-top: 70px;
-  position: relative;
-  margin: 0;
-}
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import '~@ng-select/ng-select/themes/material.theme.css';
 
 a {
   color: black;
 }
+
+.page-container {
+  position: relative;
+  min-height: 100vh;
+}
+
+.main-row {
+  display: flex;
+  flex-wrap: wrap;
+  min-height: -webkit-fill-available;
+}
+
+.sidenav, .mobile-header {
+	background-color: aliceblue;
+}
+
+.main-content {
+	background-color: white;
+}
+
+.title {
+  text-align: center;
+  color: yellow;
+}
+
+.ng-select.adk-ng-select {
+  padding-bottom: 0;
+
+}
+
+.ng-select.adk-ng-select .ng-select-container {
+  min-height: fit-content;
+}
+
+.ng-select.adk-ng-select .ng-select-container .ng-value-container {
+  padding: 0;
+  border-top: solid transparent;
+}
+
+.ng-select.adk-ng-select .ng-select-container .ng-value-container {
+  align-items: stretch;
+  padding: 0;
+  border-top: solid transparent;
+}
+

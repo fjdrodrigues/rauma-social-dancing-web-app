@@ -5,6 +5,6 @@ export class Post {
 	title: string;
 	text?: string;
 	category?: string;
-	author?: User;
-	creationDate?: Date;
+	author: User;
+	creationDate: Date;
 }

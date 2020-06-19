@@ -8,7 +8,7 @@
   <link rel="icon" type="image/x-icon" href="frontend/favicon.ico">
 	<link rel="stylesheet" href="frontend/styles.css">
 </head>
-<body style="height: 100%; width: 100%"></body>
+<body></body>
 <?php
 
 include_angular_app();

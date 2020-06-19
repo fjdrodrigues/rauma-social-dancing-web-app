@@ -1,12 +1,30 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BasePostComponent } from './base-post/base-post.component';
 import { VideoComponent } from './video/video.component';
+import { HasAnyRoleDirective } from './security/has-any-role.directive';
+import { TokenStorageService } from './security/token-storage.service';
+import { AlertComponent } from './alert/alert.component';
+import { ADKSharedLibsModule } from './shared-libs.module';
 
 @NgModule({
-  declarations: [
-    BasePostComponent,
-    VideoComponent
+  imports: [
+    ADKSharedLibsModule
   ],
-  imports: []
+  declarations: [
+    HasAnyRoleDirective,
+    BasePostComponent,
+    VideoComponent,
+    AlertComponent
+  ],
+  providers: [
+      TokenStorageService,
+  ],
+  exports: [
+      HasAnyRoleDirective,
+      BasePostComponent,
+      VideoComponent,
+      AlertComponent
+  ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class SharedModule { }

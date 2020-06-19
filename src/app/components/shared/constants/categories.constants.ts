@@ -1,0 +1,1 @@
+export const categories = ['class', 'workshop', 'festival', 'party', 'sports', 'development'];
