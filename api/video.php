@@ -4,7 +4,7 @@
  */
 include_once './connector.php';
 
-$connection = Connector::connect();
+
 
 class Video {
 
@@ -88,7 +88,7 @@ class Video {
 			return http_response_code(401);
 		}
 		//User is present
-		if(!$_SESSION['user_id']) {
+		if(!isset($user_id)) {
 			return http_response_code(400);
 		}
 		// Validate
@@ -141,7 +141,7 @@ class Video {
 			return http_response_code(401);
 		}
 		//User is present
-		if(!$_SESSION['user_id']) {
+		if(!isset($user_id)) {
 			return http_response_code(400);
 		}
 		// Validate.
@@ -183,7 +183,7 @@ class Video {
 			return http_response_code(401);
 		}
 		//User is present
-		if(!$_SESSION['user_id']) {
+		if(!isset($user_id)) {
 			return http_response_code(400);
 		}
 		// Validate.

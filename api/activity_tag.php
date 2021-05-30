@@ -4,7 +4,8 @@
  */
 include_once './connector.php';
 
-$connection = Connector::connect();
+
+
 
 class ActivityTag {
 
@@ -56,14 +57,14 @@ class ActivityTag {
 	public static function getActivitiesForTag($tagID) {
 		global $con;
 		// Validate.
-        if((int)$tagID < 1) {
-            return http_response_code(400);
-        }
-        // Sanitize
-        $category = mysqli_real_escape_string($con, $tagID);
-        // SQL
-        $sql = "SELECT * FROM activity_tag
-            WHERE tag_id = '{$tagID}'";
+		if((int)$tagID < 1) {
+			return http_response_code(400);
+		}
+		// Sanitize
+		$category = mysqli_real_escape_string($con, $tagID);
+		// SQL
+		$sql = "SELECT * FROM activity_tag
+			WHERE tag_id = '{$tagID}'";
 		//Query
 		if($result = mysqli_query($con, $sql)) {
 			$activityTags = [];
@@ -84,14 +85,14 @@ class ActivityTag {
 	public static function getTagsForActivity($activityID) {
 		global $con;
 		// Validate.
-        if((int)$activityID < 1) {
-            return http_response_code(400);
-        }
-        // Sanitize
-        $category = mysqli_real_escape_string($con, $activityID);
-        // SQL
-        $sql = "SELECT * FROM activity_tag
-            WHERE activity_id = '{$activityID}'";
+		if((int)$activityID < 1) {
+			return;
+		}
+		// Sanitize
+		$category = mysqli_real_escape_string($con, $activityID);
+		// SQL
+		$sql = "SELECT * FROM activity_tag
+			WHERE activity_id = '{$activityID}'";
 		//Query
 		if($result = mysqli_query($con, $sql)) {
 			$activityTags = [];
@@ -103,9 +104,7 @@ class ActivityTag {
 				$activityTags[$i]['creation_date']    = $row['creation_date'];
 				$i++;
 			}
-			echo json_encode($activityTags);
-		}else {
-			return http_response_code(404);
+			return $activityTags;
 		}
 	}
 
@@ -118,13 +117,13 @@ class ActivityTag {
 			return http_response_code(401);
 		}
 		//User is present
-		if(!$_SESSION['user_id']) {
+		if(!isset($user_id)) {
 			return http_response_code(400);
 		}
 		// Validate
-        if((int)$id < 1 || 
-            !isset($decodedParams['activityID']) || $decodedParams['activityID'] === '' ||
-            !isset($decodedParams['tagID']) || $decodedParams['tagID'] === '') {
+		if((int)$id < 1 || 
+			!isset($decodedParams['activityID']) || $decodedParams['activityID'] === '' ||
+			!isset($decodedParams['tagID']) || $decodedParams['tagID'] === '') {
 			return http_response_code(400);
 		}
 		// Sanitize
@@ -145,8 +144,8 @@ class ActivityTag {
 		$tagID	= mysqli_real_escape_string($con, $decodedParams['tagID']);
 		// SQL
 		$sql = "UPDATE activity_tag
-            SET `activity_id`='$activityID',`tag_id`='$tagID'
-            WHERE id = '{$id}'";
+			SET `activity_id`='$activityID',`tag_id`='$tagID'
+			WHERE id = '{$id}'";
 		//Update
 		if(mysqli_query($con, $sql)) {
 			$sql = "SELECT * FROM activity_tag WHERE id = '{$id}'";
@@ -174,21 +173,20 @@ class ActivityTag {
 			return http_response_code(401);
 		}
 		//User is present
-		if(!$_SESSION['user_id']) {
+		if(!isset($user_id)) {
 			return http_response_code(400);
 		}
 		// Validate.
-        if(!isset($decodedParams['activityID']) || $decodedParams['activityID'] === '' ||
-            !isset($decodedParams['tagID']) || $decodedParams['tagID'] === '') {
+		if(!isset($decodedParams['activityID']) || $decodedParams['activityID'] === '' ||
+			!isset($decodedParams['tagID']) || $decodedParams['tagID'] === '') {
 			return http_response_code(400);
 		}
 		// Sanitize
 		$activityID = mysqli_real_escape_string($con, $decodedParams['activityID']);
-		$tagID	= isset($decodedParams['tagID']) ?
-			mysqli_real_escape_string($con, $decodedParams['tagID']) : "";
+		$tagID	= mysqli_real_escape_string($con, $decodedParams['tagID']);
 		// SQL
 		$sql = "INSERT INTO `activity_tag`(`activity_id`,`tag_id`)
-		VALUES ('{$activityID}','{$tagID}')";
+			VALUES ('{$activityID}','{$tagID}')";
 		//Create
 		if(mysqli_query($con, $sql)) {
 			$id = mysqli_insert_id($con);
@@ -209,18 +207,37 @@ class ActivityTag {
 		}
 	}
 
-	public static function delete($params) {
+	public static function createBackend($params) {
 		global $con;
-		$id = $params[0];
-		$decodedParams = json_decode($params[1], true);
-		//Check Authentication
-		if (!Authentication::verifyToken($decodedParams)) {
-			return http_response_code(401);
+		// Validate.
+		if(!isset($params['activity_id']) || $params['activity_id'] === '' ||
+			!isset($params['tag_id']) || $params['tag_id'] === '') {
+			return;
 		}
-		//User is present
-		if(!$_SESSION['user_id']) {
-			return http_response_code(400);
+		// Sanitize
+		$activityID = mysqli_real_escape_string($con, $params['activity_id']);
+		$tagID	= mysqli_real_escape_string($con, $params['tag_id']);
+		// SQL
+		$sql = "INSERT INTO `activity_tag`(`activity_id`,`tag_id`)
+			VALUES ('{$activityID}','{$tagID}')";
+		//Create
+		if(mysqli_query($con, $sql)) {
+			$id = mysqli_insert_id($con);
+			$sql = "SELECT * FROM activity_tag WHERE id = '{$id}'";
+			//retrieve created activity tag
+			if($result = mysqli_query($con,$sql)) {
+				$row = mysqli_fetch_assoc($result);
+				$activityTag['id'] 			= $row['id'];
+				$activityTag['activity_id'] 	= $row['activity_id'];
+				$activityTag['tag_id'] 	    = $row['tag_id'];
+				$activityTag['creation_date'] = $row['creation_date'];
+				return $activityTag;
+			}
 		}
+	}
+
+	public static function delete($id) {
+		global $con;
 		// Validate.
 		if((int)$id < 1) {
 			return http_response_code(400);
@@ -230,10 +247,6 @@ class ActivityTag {
 		// SQL
 		$sql = "DELETE FROM `activity_tag` WHERE `id` ='{$id}'";
 		//Delete
-		if(mysqli_query($con, $sql)) {
-			return http_response_code(201);
-		}else {
-			return http_response_code(404);
-		}
+		mysqli_query($con, $sql);
 	}
 }

@@ -4,7 +4,7 @@ import { PostService } from '../../../services/post.service';
 
 import { BasePostComponent } from '../../shared/base-post/base-post.component';
 
-import { Post } from '../../../domain/post.model';
+import { Post } from '../../../domain/post.interface';
 
 @Component({
   selector: 'kizomba-dance',

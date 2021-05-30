@@ -4,7 +4,8 @@
  */
 include_once './connector.php';
 
-$connection = Connector::connect();
+
+
 
 class ActivityVideo {
 
@@ -56,14 +57,14 @@ class ActivityVideo {
 	public static function getActivitiesForVideo($videoID) {
 		global $con;
 		// Validate.
-        if((int)$videoID < 1) {
-            return http_response_code(400);
-        }
-        // Sanitize
-        $category = mysqli_real_escape_string($con, $videoID);
-        // SQL
-        $sql = "SELECT * FROM activity_video
-            WHERE video_id = '{$videoID}'";
+		if((int)$videoID < 1) {
+			return http_response_code(400);
+		}
+		// Sanitize
+		$category = mysqli_real_escape_string($con, $videoID);
+		// SQL
+		$sql = "SELECT * FROM activity_video
+			WHERE video_id = '{$videoID}'";
 		//Query
 		if($result = mysqli_query($con, $sql)) {
 			$activityVideos = [];
@@ -84,14 +85,14 @@ class ActivityVideo {
 	public static function getVideosForActivity($activityID) {
 		global $con;
 		// Validate.
-        if((int)$activityID < 1) {
-            return http_response_code(400);
-        }
-        // Sanitize
-        $category = mysqli_real_escape_string($con, $activityID);
-        // SQL
-        $sql = "SELECT * FROM activity_video
-            WHERE activity_id = '{$activityID}'";
+		if((int)$activityID < 1) {
+			return;
+		}
+		// Sanitize
+		$category = mysqli_real_escape_string($con, $activityID);
+		// SQL
+		$sql = "SELECT * FROM activity_video
+			WHERE activity_id = '{$activityID}'";
 		//Query
 		if($result = mysqli_query($con, $sql)) {
 			$activityVideos = [];
@@ -103,9 +104,7 @@ class ActivityVideo {
 				$activityVideos[$i]['creation_date']    = $row['creation_date'];
 				$i++;
 			}
-			echo json_encode($activityVideos);
-		}else {
-			return http_response_code(404);
+			return $activityVideos;
 		}
 	}
 
@@ -118,13 +117,13 @@ class ActivityVideo {
 			return http_response_code(401);
 		}
 		//User is present
-		if(!$_SESSION['user_id']) {
+		if(!isset($user_id)) {
 			return http_response_code(400);
 		}
 		// Validate
-        if((int)$id < 1 || 
-            !isset($decodedParams['activityID']) || $decodedParams['activityID'] === '' ||
-            !isset($decodedParams['videoID']) || $decodedParams['videoID'] === '') {
+		if((int)$id < 1 || 
+			!isset($decodedParams['activityID']) || $decodedParams['activityID'] === '' ||
+			!isset($decodedParams['videoID']) || $decodedParams['videoID'] === '') {
 			return http_response_code(400);
 		}
 		// Sanitize
@@ -145,8 +144,8 @@ class ActivityVideo {
 		$videoID	= mysqli_real_escape_string($con, $decodedParams['videoID']);
 		// SQL
 		$sql = "UPDATE activity_video
-            SET `activity_id`='$activityID',`video_id`='$videoID'
-            WHERE id = '{$id}'";
+			SET `activity_id`='$activityID',`video_id`='$videoID'
+			WHERE id = '{$id}'";
 		//Update
 		if(mysqli_query($con, $sql)) {
 			$sql = "SELECT * FROM activity_video WHERE id = '{$id}'";
@@ -174,21 +173,20 @@ class ActivityVideo {
 			return http_response_code(401);
 		}
 		//User is present
-		if(!$_SESSION['user_id']) {
+		if(!isset($user_id)) {
 			return http_response_code(400);
 		}
 		// Validate.
-        if(!isset($decodedParams['activityID']) || $decodedParams['activityID'] === '' ||
-            !isset($decodedParams['videoID']) || $decodedParams['videoID'] === '') {
+		if(!isset($decodedParams['activityID']) || $decodedParams['activityID'] === '' ||
+			!isset($decodedParams['videoID']) || $decodedParams['videoID'] === '') {
 			return http_response_code(400);
 		}
 		// Sanitize
 		$activityID = mysqli_real_escape_string($con, $decodedParams['activityID']);
-		$videoID	= isset($decodedParams['videoID']) ?
-			mysqli_real_escape_string($con, $decodedParams['videoID']) : "";
+		$videoID	= mysqli_real_escape_string($con, $decodedParams['videoID']);
 		// SQL
 		$sql = "INSERT INTO `activity_video`(`activity_id`,`video_id`)
-		VALUES ('{$activityID}','{$videoID}')";
+			VALUES ('{$activityID}','{$videoID}')";
 		//Create
 		if(mysqli_query($con, $sql)) {
 			$id = mysqli_insert_id($con);
@@ -209,18 +207,37 @@ class ActivityVideo {
 		}
 	}
 
-	public static function delete($params) {
+	public static function createBackend($params) {
 		global $con;
-		$id = $params[0];
-		$decodedParams = json_decode($params[1], true);
-		//Check Authentication
-		if (!Authentication::verifyToken($decodedParams)) {
-			return http_response_code(401);
+		// Validate.
+		if(!isset($params['activity_id']) || $params['activity_id'] === '' ||
+			!isset($params['video_id']) || $params['video_id'] === '') {
+			return;
 		}
-		//User is present
-		if(!$_SESSION['user_id']) {
-			return http_response_code(400);
+		// Sanitize
+		$activityID = mysqli_real_escape_string($con, $params['activity_id']);
+		$videoID	= mysqli_real_escape_string($con, $params['video_id']);
+		// SQL
+		$sql = "INSERT INTO `activity_video`(`activity_id`,`video_id`)
+			VALUES ('{$activityID}','{$videoID}')";
+		//Create
+		if(mysqli_query($con, $sql)) {
+			$id = mysqli_insert_id($con);
+			$sql = "SELECT * FROM activity_video WHERE id = '{$id}'";
+			//retrieve created activity video
+			if($result = mysqli_query($con,$sql)) {
+				$row = mysqli_fetch_assoc($result);
+				$activityVideo['id'] 			= $row['id'];
+				$activityVideo['activity_id'] 	= $row['activity_id'];
+				$activityVideo['video_id'] 	    = $row['video_id'];
+				$activityVideo['creation_date'] = $row['creation_date'];
+				return $activityVideo;
+			}
 		}
+	}
+
+	public static function delete($id) {
+		global $con;
 		// Validate.
 		if((int)$id < 1) {
 			return http_response_code(400);
@@ -230,10 +247,6 @@ class ActivityVideo {
 		// SQL
 		$sql = "DELETE FROM `activity_video` WHERE `id` ='{$id}'";
 		//Delete
-		if(mysqli_query($con, $sql)) {
-			return http_response_code(201);
-		}else {
-			return http_response_code(404);
-		}
+		mysqli_query($con, $sql);
 	}
 }

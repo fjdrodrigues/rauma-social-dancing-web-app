@@ -4,7 +4,8 @@
  */
 include_once './connector.php';
 
-$connection = Connector::connect();
+
+
 
 class PostImage {
 
@@ -118,7 +119,7 @@ class PostImage {
 			return http_response_code(401);
 		}
 		//User is present
-		if(!$_SESSION['user_id']) {
+		if(!isset($user_id)) {
 			return http_response_code(400);
 		}
 		// Validate
@@ -174,7 +175,7 @@ class PostImage {
 			return http_response_code(401);
 		}
 		//User is present
-		if(!$_SESSION['user_id']) {
+		if(!isset($user_id)) {
 			return http_response_code(400);
 		}
 		// Validate.
@@ -218,7 +219,7 @@ class PostImage {
 			return http_response_code(401);
 		}
 		//User is present
-		if(!$_SESSION['user_id']) {
+		if(!isset($user_id)) {
 			return http_response_code(400);
 		}
 		// Validate.

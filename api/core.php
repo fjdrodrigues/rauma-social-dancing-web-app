@@ -11,7 +11,7 @@ $key = "8334857394520392348230482";
 $iss = "http://amordkizomba.c1.biz/";
 $aud = "http://amordkizomba.c1.biz/";
 $iat = time();
-$nbf = $iat + 10;
-$exp = $nbf + 600;
+$nbf = $iat + 3;
+$exp = $nbf + 600000;
 
 ?>

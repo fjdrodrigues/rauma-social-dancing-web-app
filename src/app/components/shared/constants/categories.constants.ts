@@ -1,1 +1,1 @@
-export const categories = ['class', 'workshop', 'festival', 'party', 'sports', 'development'];
+export const CATEGORIES = ['Class', 'Workshop', 'Festival', 'Party', 'Sports', 'Development'];

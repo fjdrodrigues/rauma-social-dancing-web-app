@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { User } from '../../../domain/user.model';
+import { User } from '../../../domain/user.interface';
 import { Subject, Observable } from 'rxjs';
 
 const TOKEN_KEY = 'auth-token';

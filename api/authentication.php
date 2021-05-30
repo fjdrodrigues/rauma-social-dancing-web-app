@@ -11,7 +11,14 @@ include_once 'libs/php-jwt-master/src/JWT.php';
 use \Firebase\JWT\JWT;
 
 class Authentication {
-    public static function login($params) {
+
+    public function __construct() {
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
+    }
+
+    public function login($params) {
         global $key, $iss, $aud, $iat, $nbf, $exp;
         // get posted data
         $decodedParams = json_decode($params, true);
@@ -33,15 +40,15 @@ class Authentication {
                 "userType" => $user['user_type'],
                 "birthDate" => $user['birth_date'])
             );
-            $_SESSION['user_id'] = $user['id'];
+            $_SESSION["user_id"] = $user['id'];
             // set response code
             http_response_code(200);
             // generate jwt
             $jwt = JWT::encode($token, $key);
+            header("Access-Control-Expose-Headers: Authorization");
+            header("Authorization: Bearer " . $jwt);
             echo json_encode(
                     array(
-                        "message" => "Successful login.",
-                        "jwt" => $jwt,
                         "user" =>  array(
                             "id" => $user['id'],
                             "username" => $user['username'],
@@ -60,14 +67,20 @@ class Authentication {
         }
     }
 
-    public static function logout($params) {
+    public function logout($params) {
 
     }
 
-    public static function verifyToken($params) {
+    public function verifyAuthentication() {
+        if ($headers = apache_request_headers()) {
+            $jwt = trim(str_replace('Bearer ', '', $headers['Authorization']));
+            return $this->verifyToken($jwt);
+        }
+        return false;
+    }
+
+    public function verifyToken($jwt) {
         global $key;
-        // get jwt
-        $jwt = isset($params->jwt) ? $params->jwt : "";
         // if jwt is not empty
         if ($jwt) {
             // if decode succeed, show user details

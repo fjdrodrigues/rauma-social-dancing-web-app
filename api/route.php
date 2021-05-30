@@ -30,7 +30,7 @@ class Route {
     self::$methodNotAllowed = $function;
   }
 
-  public static function run($basepath = '/', $case_matters = false, $trailing_slash_matters = false, $multimatch = false) {
+  public static function run($basepath = '/', $entities, $case_matters = false, $trailing_slash_matters = false, $multimatch = false) {
     // Parse current URL
     $parsed_url = parse_url($_SERVER['REQUEST_URI']);
 
@@ -85,6 +85,8 @@ class Route {
               array_push($matches, $input);
             }
 
+            array_push($matches, $entities);
+
             call_user_func_array($route['function'], $matches);
 
             $route_match_found = true;
@@ -113,7 +115,6 @@ class Route {
           call_user_func_array(self::$pathNotFound, Array($path));
         }
       }
-
     }
   }
 

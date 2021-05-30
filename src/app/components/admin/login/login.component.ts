@@ -3,7 +3,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { AuthenticationService } from '../../../services/authentication.service';
 import { TokenStorageService } from '../../shared/security/token-storage.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { User } from '../../../domain/user.model';
+import { User } from '../../../domain/user.interface';
 
 @Component({
   selector: 'login',
@@ -40,9 +40,11 @@ export class LoginComponent implements OnInit {
     };
     this.authenticationService.login(userData)
       .subscribe(
-        data => {
-          const user: User = data.user;
-          this.tokenStorageService.saveToken(data.jwt);
+        res => {
+          console.log('Res: ', res);
+          const user: User = res.body.user;
+          this.tokenStorageService.saveToken(res.headers.get('authorization').replace('Bearer', '').trim());
+          console.log('Token: ',this.tokenStorageService.getToken());
           this.tokenStorageService.saveUser(user);
           if (this.returnUrl) {
             this.router.navigate([`/${this.returnUrl}`]);

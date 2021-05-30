@@ -4,7 +4,8 @@
  */
 include_once './connector.php';
 
-$connection = Connector::connect();
+
+
 
 class ActivityImage {
 
@@ -56,14 +57,14 @@ class ActivityImage {
 	public static function getActivitiesForImage($imageID) {
 		global $con;
 		// Validate.
-        if((int)$imageID < 1) {
-            return http_response_code(400);
-        }
-        // Sanitize
-        $category = mysqli_real_escape_string($con, $imageID);
-        // SQL
-        $sql = "SELECT * FROM activity_image
-            WHERE image_id = '{$imageID}'";
+		if((int)$imageID < 1) {
+			return http_response_code(400);
+		}
+		// Sanitize
+		$category = mysqli_real_escape_string($con, $imageID);
+		// SQL
+		$sql = "SELECT * FROM activity_image
+			WHERE image_id = '{$imageID}'";
 		//Query
 		if($result = mysqli_query($con, $sql)) {
 			$activityImages = [];
@@ -84,14 +85,14 @@ class ActivityImage {
 	public static function getImagesForActivity($activityID) {
 		global $con;
 		// Validate.
-        if((int)$activityID < 1) {
-            return http_response_code(400);
-        }
-        // Sanitize
-        $category = mysqli_real_escape_string($con, $activityID);
-        // SQL
-        $sql = "SELECT * FROM activity_image
-            WHERE activity_id = '{$activityID}'";
+		if((int)$activityID < 1) {
+			return;
+		}
+		// Sanitize
+		$category = mysqli_real_escape_string($con, $activityID);
+		// SQL
+		$sql = "SELECT * FROM activity_image
+			WHERE activity_id = '{$activityID}'";
 		//Query
 		if($result = mysqli_query($con, $sql)) {
 			$activityImages = [];
@@ -103,9 +104,7 @@ class ActivityImage {
 				$activityImages[$i]['creation_date']    = $row['creation_date'];
 				$i++;
 			}
-			echo json_encode($activityImages);
-		}else {
-			return http_response_code(404);
+			return $activityImages;
 		}
 	}
 
@@ -118,13 +117,13 @@ class ActivityImage {
 			return http_response_code(401);
 		}
 		//User is present
-		if(!$_SESSION['user_id']) {
+		if(!isset($user_id)) {
 			return http_response_code(400);
 		}
 		// Validate
-        if((int)$id < 1 || 
-            !isset($decodedParams['activityID']) || $decodedParams['activityID'] === '' ||
-            !isset($decodedParams['imageID']) || $decodedParams['imageID'] === '') {
+		if((int)$id < 1 || 
+			!isset($decodedParams['activityID']) || $decodedParams['activityID'] === '' ||
+			!isset($decodedParams['imageID']) || $decodedParams['imageID'] === '') {
 			return http_response_code(400);
 		}
 		// Sanitize
@@ -145,8 +144,8 @@ class ActivityImage {
 		$imageID	= mysqli_real_escape_string($con, $decodedParams['imageID']);
 		// SQL
 		$sql = "UPDATE activity_image
-            SET `activity_id`='$activityID',`image_id`='$imageID'
-            WHERE id = '{$id}'";
+			SET `activity_id`='$activityID',`image_id`='$imageID'
+			WHERE id = '{$id}'";
 		//Update
 		if(mysqli_query($con, $sql)) {
 			$sql = "SELECT * FROM activity_image WHERE id = '{$id}'";
@@ -174,21 +173,20 @@ class ActivityImage {
 			return http_response_code(401);
 		}
 		//User is present
-		if(!$_SESSION['user_id']) {
+		if(!isset($user_id)) {
 			return http_response_code(400);
 		}
 		// Validate.
-        if(!isset($decodedParams['activityID']) || $decodedParams['activityID'] === '' ||
-            !isset($decodedParams['imageID']) || $decodedParams['imageID'] === '') {
+		if(!isset($decodedParams['activityID']) || $decodedParams['activityID'] === '' ||
+			!isset($decodedParams['imageID']) || $decodedParams['imageID'] === '') {
 			return http_response_code(400);
 		}
 		// Sanitize
 		$activityID = mysqli_real_escape_string($con, $decodedParams['activityID']);
-		$imageID	= isset($decodedParams['imageID']) ?
-			mysqli_real_escape_string($con, $decodedParams['imageID']) : "";
+		$imageID	= mysqli_real_escape_string($con, $decodedParams['imageID']);
 		// SQL
 		$sql = "INSERT INTO `activity_image`(`activity_id`,`image_id`)
-		VALUES ('{$activityID}','{$imageID}')";
+			VALUES ('{$activityID}','{$imageID}')";
 		//Create
 		if(mysqli_query($con, $sql)) {
 			$id = mysqli_insert_id($con);
@@ -209,18 +207,37 @@ class ActivityImage {
 		}
 	}
 
-	public static function delete($params) {
+	public static function createBackend($params) {
 		global $con;
-		$id = $params[0];
-		$decodedParams = json_decode($params[1], true);
-		//Check Authentication
-		if (!Authentication::verifyToken($decodedParams)) {
-			return http_response_code(401);
+		// Validate.
+		if(!isset($params['activity_id']) || $params['activity_id'] === '' ||
+			!isset($params['image_id']) || $params['image_id'] === '') {
+			return;
 		}
-		//User is present
-		if(!$_SESSION['user_id']) {
-			return http_response_code(400);
+		// Sanitize
+		$activityID = mysqli_real_escape_string($con, $params['activity_id']);
+		$imageID	= mysqli_real_escape_string($con, $params['imageid']);
+		// SQL
+		$sql = "INSERT INTO `activity_image`(`activity_id`,`image_id`)
+			VALUES ('{$activityID}','{$imageID}')";
+		//Create
+		if(mysqli_query($con, $sql)) {
+			$id = mysqli_insert_id($con);
+			$sql = "SELECT * FROM activity_image WHERE id = '{$id}'";
+			//retrieve created activity image
+			if($result = mysqli_query($con,$sql)) {
+				$row = mysqli_fetch_assoc($result);
+				$activityImage['id'] 			= $row['id'];
+				$activityImage['activity_id'] 	= $row['activity_id'];
+				$activityImage['image_id'] 	    = $row['image_id'];
+				$activityImage['creation_date'] = $row['creation_date'];
+				return $activityImage;
+			}
 		}
+	}
+
+	public static function delete($id) {
+		global $con;
 		// Validate.
 		if((int)$id < 1) {
 			return http_response_code(400);
@@ -230,10 +247,6 @@ class ActivityImage {
 		// SQL
 		$sql = "DELETE FROM `activity_image` WHERE `id` ='{$id}'";
 		//Delete
-		if(mysqli_query($con, $sql)) {
-			return http_response_code(201);
-		}else {
-			return http_response_code(404);
-		}
+		mysqli_query($con, $sql);
 	}
 }

@@ -26,6 +26,7 @@ import { SharedModule } from './components/shared/shared.module';
 import { AuthGuard } from './components/shared/security/auth-guard';
 import { AdminModule } from './components/admin/admin.module';
 import { LayoutModule } from './layout/layout.module';
+import { AuthInterceptorProviders } from './components/shared/security/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { LayoutModule } from './layout/layout.module';
   providers: [
     { provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: { useUtc: true } },
     { provide: MAT_DATE_LOCALE, useValue: 'en-GB'},
-    AuthGuard
+    AuthGuard,
+    AuthInterceptorProviders
   ],
   bootstrap: [AppComponent],
   schemas: [

@@ -3,7 +3,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { TokenStorageService } from '../../shared/security/token-storage.service';
 import { UserService } from '../../../services/user.service';
-import { User, UserType } from '../../../domain/user.model';
+import { User, UserType } from '../../../domain/user.interface';
 import { Subscription } from 'rxjs';
 
 @Component({

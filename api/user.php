@@ -5,8 +5,6 @@
  */
 include_once './connector.php';
 
-$con = Connector::connect();
-
 class User {
 
 	public static function userExists($username) {
@@ -208,7 +206,7 @@ class User {
 	}
 }
 /*
-if(!$_SESSION['user_id']) {
+if(!isset($user_id)) {
 	return http_response_code(400);
 }
 

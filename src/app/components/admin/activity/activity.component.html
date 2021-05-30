@@ -1,5 +1,5 @@
 <div class="d-md-flex flex-column">
-  <form role="form" [formGroup]="activityForm">
+  <form role="form" [formGroup]="activityForm" (ngSubmit)="save()">
     <div class="form-group">
       <label for="title" class="form-control-label">
         Title
@@ -7,17 +7,20 @@
       <input id="title"
         type="text"
         class="form-control"
-        formControlName="title">              
+        formControlName="title">
     </div>
+
     <div class="form-group">
       <label for="description" class="form-control-label">
         Description
       </label>
-      <input id="description"
+      <textarea id="description"
         type="text"
         class="form-control"
-        formControlName="description">              
+        formControlName="description"
+        rows="5"></textarea>
     </div>
+
     <div class="form-group">
       <label for="location" class="form-control-label">
         Location
@@ -25,8 +28,9 @@
       <input id="location"
         type="text"
         class="form-control"
-        formControlName="location">              
+        formControlName="location">
     </div>
+
     <div class="form-group">
       <label for="category"
         class="form-control-label">
@@ -34,13 +38,14 @@
       </label>
       <ng-select
         id="category"
+        class="adk-ng-select"
         [formControlName]="'category'"
         [items]="categories"
         [searchable]="false"
-        [clearable]="false"
-        [placeholder]="'Choose a Category'">
+        [clearable]="false">
       </ng-select>
     </div>
+
     <div class="form-group">
       <label for="start" class="form-control-label">
         Start
@@ -49,8 +54,9 @@
         type="datetime-local"
         placeholder="Start Date"
         class="form-control"
-        formControlName="start">      
+        formControlName="start">
     </div>
+
     <div class="form-group">
       <label for="end" class="form-control-label">
         End
@@ -58,7 +64,43 @@
       <input id="end"
         type="datetime-local"
         class="form-control"
-        formControlName="end">            
+        formControlName="end">
     </div>
+
+    <div class="form-group">
+      <label for="tags" class="form-control-label">Tags</label>
+      <mat-form-field class="tags">
+        <mat-chip-list #chipList aria-label="Tag selection">
+          <mat-chip
+            *ngFor="let tag of tags"
+            [removable]="removable"
+            (removed)="remove(tag)">
+            {{ tag.name }}
+            <mat-icon matChipRemove *ngIf="removable">Cancel</mat-icon>
+          </mat-chip>
+          <input formControlName="tags"
+            class="form-control"
+            [matAutocomplete]="auto"
+            [matChipInputFor]="chipList"
+            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+            [matChipInputAddOnBlur]="addOnBlur"
+            (matChipInputTokenEnd)="addTag($event)">
+        </mat-chip-list>
+        <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+          <mat-option *ngFor="let tag of existingTags | async" [value]="tag">
+            {{ tag.name }}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
+
+    <!--
+    <button type="submit"
+        id="saveActivity"
+        [disabled]="isButtonDisabled"
+        class="btn btn-primary">
+        Save
+    </button>
+    -->
   </form>
 </div>

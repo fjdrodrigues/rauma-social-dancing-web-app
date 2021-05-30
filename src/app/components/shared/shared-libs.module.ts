@@ -30,6 +30,7 @@ import { MatIconModule } from '@angular/material/icon';
     MatTooltipModule,
     MatDatepickerModule,
     MatFormFieldModule,
+    MatChipsModule,
     NgSelectModule
   ]
 })

@@ -24,4 +24,8 @@ export class BaseComponent implements OnDestroy {
     this.subsArray.forEach(sub => sub.unsubscribe());
     this.subsArray = [];
   }
+
+  public onError(res: any) {
+    console.log(res);
+  }
 }

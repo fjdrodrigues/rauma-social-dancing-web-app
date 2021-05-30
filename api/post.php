@@ -4,7 +4,6 @@
  */
 include_once './connector.php';
 
-$con = Connector::connect();
 
 class Post {
 
@@ -194,7 +193,7 @@ class Post {
 			return http_response_code(401);
 		}
 		//User is present
-		if(!$_SESSION['user_id']) {
+		if(!isset($user_id)) {
 			return http_response_code(400);
 		}
 		// Validate
@@ -263,7 +262,7 @@ class Post {
 			return http_response_code(401);
 		}
 		//User is present
-		if(!$_SESSION['user_id']) {
+		if(!isset($user_id)) {
 			return http_response_code(400);
 		}
 		// Validate.
@@ -313,7 +312,7 @@ class Post {
 			return http_response_code(401);
 		}
 		//User is present
-		if(!$_SESSION['user_id']) {
+		if(!isset($user_id)) {
 			return http_response_code(400);
 		}
 		// Validate.

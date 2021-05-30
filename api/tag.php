@@ -4,11 +4,18 @@
  */
 include_once './connector.php';
 
-$connection = Connector::connect();
-
 class Tag {
 
-	public static function getOneById($id) {
+	private $auth;
+
+	function __construct($auth) {
+		if (session_status() == PHP_SESSION_NONE) {
+			session_start();
+		}
+		$this->auth = $auth;
+	}
+
+	public function getOneById($id) {
 		global $con;
 		// Validate.
 		if((int) $id < 1) {
@@ -32,7 +39,31 @@ class Tag {
 		}
 	}
 
-	public static function getTags() {
+	public function getOneByName($name) {
+		global $con;
+		// Validate.
+		if(!is_string($name)) {
+			return http_response_code(400);
+		}
+		// Sanitize
+		$name = mysqli_real_escape_string($con, $name);
+		// SQL
+		$sql = "SELECT * FROM tag
+			WHERE name = '{$name}'";
+		//Query
+		if($result = mysqli_query($con, $sql)) {
+			$row = mysqli_fetch_assoc($result);
+			$tag['id'] 			    	= $row['id'];
+			$tag['name'] 					= $row['name'];
+			$tag['author_id'] 	  = $row['author_id'];
+			$tag['creation_date']	= $row['creation_date'];
+			echo json_encode($tag);
+		}else {
+			return http_response_code(404);
+		}
+	}
+
+	public function getTags() {
 		global $con;
 		$sql = "SELECT * FROM tag";
 		//Query
@@ -52,7 +83,7 @@ class Tag {
 		}
 	}
 
-	public static function getTagsByAuthor($authorID) {
+	public function getTagsByAuthor($authorID) {
 		global $con;
 		if ((int) $authorID < 1) {
 			return http_response_code(400);
@@ -79,16 +110,16 @@ class Tag {
 		}
 	}
 
-	public static function update($params) {
+	public function update($params) {
 		global $con;
 		$id = $params[0];
 		$decodedParams = json_decode($params[1], true);
 		//Check Authentication
-		if (!Authentication::verifyToken($decodedParams)) {
+		if (!$this->auth->verifyToken($decodedParams)) {
 			return http_response_code(401);
 		}
 		//User is present
-		if(!$_SESSION['user_id']) {
+		if(!isset($user_id)) {
 			return http_response_code(400);
 		}
 		// Validate
@@ -133,15 +164,15 @@ class Tag {
 		}
 	}
 
-	public static function create($params) {
+	public function create($params) {
 		global $con;
 		$decodedParams = json_decode($params, true);
 		//Check Authentication
-		if (!Authentication::verifyToken($decodedParams)) {
+		if (!$this->auth->verifyAuthentication()) {
 			return http_response_code(401);
 		}
 		//User is present
-		if(!$_SESSION['user_id']) {
+		if(!isset($_SESSION['user_id'])) {
 			return http_response_code(400);
 		}
 		// Validate.
@@ -156,6 +187,7 @@ class Tag {
 			VALUES ('{$name}','{$authorID}')";
 		//Create
 		if(mysqli_query($con, $sql)) {
+			echo "Created";
 			$id = mysqli_insert_id($con);
 			$sql = "SELECT * FROM tag WHERE id = '{$id}'";
 			//retrieve created tag
@@ -174,16 +206,16 @@ class Tag {
 		}
 	}
 
-	public static function delete($params) {
+	public function delete($params) {
 		global $con;
 		$id = $params[0];
 		$decodedParams = json_decode($params[1], true);
 		//Check Authentication
-		if (!Authentication::verifyToken($decodedParams)) {
+		if (!$this->auth->verifyToken($decodedParams)) {
 			return http_response_code(401);
 		}
 		//User is present
-		if(!$_SESSION['user_id']) {
+		if(!isset($user_id)) {
 			return http_response_code(400);
 		}
 		// Validate.

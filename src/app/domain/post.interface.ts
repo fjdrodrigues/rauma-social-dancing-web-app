@@ -1,6 +1,6 @@
-import { User } from './user.model'
+import { User } from './user.interface'
 
-export class Post {
+export interface Post {
 	id: number;
 	title: string;
 	text?: string;
