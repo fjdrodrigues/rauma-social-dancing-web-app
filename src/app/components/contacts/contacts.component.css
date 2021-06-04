@@ -12,13 +12,16 @@
   margin: 5px;
 }
 
-.contact-icon {
+.contact-icon:not(:first-of-type) {
   margin-left: 5px;
 }
 
 .contact-item {
-  margin-left: 5px;
   word-break: break-all;
+}
+
+.contact-item:not(:first-of-type) {
+  margin-left: 10px;
 }
 
 .phone-block, .email-block {
@@ -47,6 +50,10 @@
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
+}
+
+.address {
+  margin-left: 10px;
 }
 
 .map {

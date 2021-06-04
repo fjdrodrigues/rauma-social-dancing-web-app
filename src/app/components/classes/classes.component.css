@@ -28,10 +28,10 @@
 
 @media (max-width: 550px) {
   .class-schedule .adk-table-container .adk-table-content {
-    grid-template-columns: 95px auto;
+    grid-template-columns: 110px auto;
   }
 
   .prices .adk-table-container .adk-table-content {
-    grid-template-columns: 165px auto;
+    grid-template-columns: 170px auto;
   }
 }

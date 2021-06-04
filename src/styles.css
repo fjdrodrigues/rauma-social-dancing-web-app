@@ -14,7 +14,7 @@ a {
   font-weight: 900;
   text-transform: uppercase;
   color: #d79922;
-  text-shadow: 1px 3px 1px #c5cbe3;
+  text-shadow: 1px 2px 1px #c5cbe3;
 }
 
 @media (min-width: 0px) and (max-width: 550px) {
