@@ -32,6 +32,7 @@ import { AuthGuard } from './components/shared/security/auth-guard';
 import { AdminModule } from './components/admin/admin.module';
 import { LayoutModule } from './layout/layout.module';
 import { AuthInterceptorProviders } from './components/shared/security/auth.interceptor';
+import { BaseComponent } from './core/base.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { AuthInterceptorProviders } from './components/shared/security/auth.inte
 		HealthComponent,
 		BodyHealthComponent,
     MindHealthComponent,
-    ContactsComponent
+    ContactsComponent,
+    BaseComponent
   ],
   imports: [
     BrowserModule,
