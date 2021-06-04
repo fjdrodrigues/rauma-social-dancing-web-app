@@ -5,11 +5,11 @@ import { PostService } from '../../../services/post.service';
 import { BasePostComponent } from '../../shared/base-post/base-post.component';
 
 @Component({
-  selector: 'kuduro-dance',
-  templateUrl: './kuduro-dance.component.html',
-  styleUrls: ['./kuduro-dance.component.css']
+  selector: 'bachata-dance',
+  templateUrl: './bachata-dance.component.html',
+  styleUrls: ['./bachata-dance.component.css']
 })
-export class KuduroDanceComponent extends BasePostComponent {
+export class BachataDanceComponent extends BasePostComponent {
 	
   constructor(protected postService: PostService) {
 	  super(postService);

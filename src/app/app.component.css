@@ -1,9 +1,36 @@
-.main-container {
+.main-row {
   position: relative;
-  padding: 2.5rem 0 2.5rem 0;
+  padding: 5.5rem 0 4rem 0;
   width: 100%;
-  min-height: 100vh;
+  min-height: calc(100vh - 9.5rem);
   margin-right: auto;
   margin-left: auto;
 }
 
+@media (min-width: 0px) and (max-width: 272px) {
+  .main-row {
+    padding: 3rem 0 4rem 0;
+    min-height: calc(100vh - 7rem);
+  }
+}
+
+@media (min-width: 273px) and (max-width: 351px) {
+  .main-row {
+    padding: 3rem 0 4rem 0;
+    min-height: calc(100vh - 7rem);
+  }
+}
+
+@media (min-width: 352px) and (max-width: 749px) {
+  .main-row {
+    padding: 4rem 0 4rem 0;
+    min-height: calc(100vh - 8rem);
+  }
+}
+
+@media (min-width: 750px) and (max-width: 899px){
+  .main-row {
+    padding: 5rem 0 4rem 0;
+    min-height: calc(100vh - 9rem);
+  }
+}

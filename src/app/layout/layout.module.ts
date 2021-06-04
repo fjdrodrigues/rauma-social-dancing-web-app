@@ -6,6 +6,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterModule } from '@angular/router';
 
 import { AppNavbarComponent } from './app-navbar/app-navbar.component';
 import { AppMobileHeaderComponent } from './app-mobile-header/app-mobile-header.component';
@@ -28,6 +29,7 @@ import { AdminModule } from '../components/admin/admin.module';
       NgbDropdownModule,
       AdminModule,
       SharedModule,
+      RouterModule
     ],
     declarations: [
       AppNavbarComponent,

@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { NgbModule, NgbDropdown } from '@ng-bootstrap/ng-bootstrap';
 import { TokenStorageService } from '../../components/shared/security/token-storage.service';
-import { Router, NavigationStart } from '@angular/router';
+import { Router, RouterModule, NavigationStart, Event, Scroll } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -17,10 +17,19 @@ export class AppNavbarComponent implements OnInit {
 
   ngOnInit() {
     this.router.events.subscribe((ev) => {
+      console.log(ev);
         if (ev instanceof NavigationStart) {
           this.isCollapsed = true;
         }
       });
+  }
+
+  @HostListener('window:scroll', ['$event']) onScroll(event : Scroll) {
+    if(window.scrollY === 0) {
+      document.getElementById("adk-navbar").style.boxShadow = "none";
+    } else {
+      document.getElementById("adk-navbar").style.boxShadow = "0px 2px 4px 2px #d799226e";
+    }
   }
 
   public toggleCollapsed(): void {

@@ -13,13 +13,18 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
 
+
+import { AboutComponent } from './components/about/about.component';
 import { DanceComponent } from './components/dance/dance.component';
 import { KizombaDanceComponent } from './components/dance/kizomba/kizomba-dance.component';
-import { SembaDanceComponent } from './components/dance/semba/semba-dance.component';
-import { KuduroDanceComponent } from './components/dance/kuduro/kuduro-dance.component';
+import { BachataDanceComponent } from './components/dance/bachata/bachata-dance.component';
+import { CubanSalsaDanceComponent } from './components/dance/cuban-salsa/cuban-salsa-dance.component';
+import { OtherDanceComponent } from './components/dance/other/other-dance.component';
+import { ClassesComponent } from './components/classes/classes.component';
 import { HealthComponent } from './components/health/health.component';
 import { BodyHealthComponent } from './components/health/body/body-health.component';
 import { MindHealthComponent } from './components/health/mind/mind-health.component';
+import { ContactsComponent } from './components/contacts/contacts.component';
 import { HomeComponent } from './home/home.component';
 
 import { SharedModule } from './components/shared/shared.module';
@@ -32,13 +37,17 @@ import { AuthInterceptorProviders } from './components/shared/security/auth.inte
   declarations: [
     AppComponent,
     HomeComponent,
+    AboutComponent,
 		DanceComponent,
 		KizombaDanceComponent,
-		SembaDanceComponent,
-    KuduroDanceComponent,
+		BachataDanceComponent,
+    CubanSalsaDanceComponent,
+    OtherDanceComponent,
+    ClassesComponent,
 		HealthComponent,
 		BodyHealthComponent,
-    MindHealthComponent
+    MindHealthComponent,
+    ContactsComponent
   ],
   imports: [
     BrowserModule,

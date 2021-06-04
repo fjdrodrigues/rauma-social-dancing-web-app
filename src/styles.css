@@ -4,7 +4,31 @@
 @import '~@ng-select/ng-select/themes/material.theme.css';
 
 a {
-  color: black;
+  color: #31343f;
+}
+
+.title {
+  text-align: center;
+  margin-top: 3rem;
+  font-size: xx-large;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: #d79922;
+  text-shadow: 1px 3px 1px #c5cbe3;
+}
+
+@media (min-width: 0px) and (max-width: 550px) {
+  .title {
+    margin-top: 1rem;
+    font-size: x-large;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  .container-fluid {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
 }
 
 .page-container {
@@ -15,21 +39,152 @@ a {
 .main-row {
   display: flex;
   flex-wrap: wrap;
-  min-height: -webkit-fill-available;
+  min-height: inherit;
 }
 
 .sidenav, .mobile-header {
-	background-color: aliceblue;
+	background-color: #efe2ba;
+}
+
+footer {
+  color: #31343f;
+  background-color: #efe2ba;
+  border-top: #d79922;
 }
 
 .main-content {
-	background-color: white;
+  min-height: inherit;
 }
 
-.title {
-  text-align: center;
-  color: yellow;
+.main-container {
+  background-color: #efe2ba;
 }
+
+/* ADK Navbar */
+
+.adk-navbar {
+  background-color: #efe2ba;
+}
+
+.adk-navbar .navbar-collapse {
+  background-color: #efe2ba;
+}
+
+.adk-navbar .navbar-toggler .adk-navbar-toggler-icon {
+  color: #4056a1;
+  font-size: 28px;
+}
+
+.adk-navbar .navbar-collapse .navbar-nav .nav-link {
+  color: #4056a1;
+}
+
+.adk-navbar .navbar-collapse .navbar-nav .nav-link:hover {
+  color: #d79922;
+  text-shadow: 1px 1px 1px #c5cbe3;
+}
+
+.adk-navbar .navbar-collapse .navbar-nav .nav-item .dropdown-menu {
+  background-color: #c5cbe3;
+}
+
+.adk-navbar .navbar-collapse .navbar-nav .nav-item .dropdown-menu .dropdown-item {
+  color: #4056a1;
+  text-shadow: 1px 2px 1px #efe2ba;
+}
+
+@media (hover: hover) {
+  .adk-navbar .navbar-collapse .navbar-nav .nav-item .dropdown-menu .dropdown-item:hover .nav-link {
+    color: #d79922;
+    text-shadow: 1px 1px 1px #c5cbe3;
+  }
+
+  .adk-navbar .navbar-collapse .navbar-nav .nav-item .dropdown:hover .nav-link {
+    color: #d79922;
+  }
+
+  .adk-navbar .navbar-collapse .navbar-nav .nav-item .dropdown-menu .dropdown-item:hover {
+    background-color: #4056a1;
+    color: #c5cbe3;
+    text-shadow: 1px 2px 1px #31343f;
+  }
+}
+
+/* ADK Tables */
+
+.adk-table-container {
+  display: flex;
+  flex-direction: column;
+  margin: 5px;
+  flex: 1 0 0;
+  min-width: max-content;
+}
+
+.adk-table-container .adk-table-top-header, .adk-table-container .adk-table-middle-header {
+  font-size: medium;
+  font-weight: bold;
+  padding: 5px;
+  height: 40px;
+  justify-content: center;
+}
+
+.adk-table-container .adk-table-top-header, .adk-table-container .adk-table-middle-header,
+  .adk-table-container .adk-table-item {
+  display:flex;
+  align-items:center;
+}
+
+.adk-table-container .adk-table-content {
+  width: 100%;
+  flex: 1;
+  /*
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  */
+  display: grid;
+  grid-template-columns: max-content auto;
+  grid-template-rows: repeat(auto-fill, 40px);
+}
+
+.adk-table-container .adk-table-item {
+  padding-left: 10px;
+  padding: 5px;
+  word-wrap: break-word;
+}
+
+.adk-table-container .adk-table-item:first-of-type {
+  grid-column: 1 / 1;
+}
+
+.adk-table-container .adk-table-item:last-of-type {
+  grid-column: 2 / 2;
+}
+
+/* ADK Tables - Colours */
+
+.adk-table-container {
+  background-color: #c5cbe366;
+  border-radius: 10px;
+  box-shadow: inset 0px 0px 3px 0px #4056a1;
+}
+
+.adk-table-container .adk-table-top-header, .adk-table-container .adk-table-middle-header {
+  border-bottom: 1px solid #efe2ba;
+  background-color: #4056a1;
+  color: #c5cbe3;
+}
+
+.adk-table-container .adk-table-top-header {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.adk-table-container .adk-table-item {
+  color: #31343f;
+}
+
+/* ADK NG Select */
 
 .ng-select.adk-ng-select {
   padding-bottom: 0;
@@ -49,4 +204,44 @@ a {
   align-items: stretch;
   padding: 0;
   border-top: solid transparent;
+}
+
+/* Icons */
+/* Whatsapp */
+.fa-whatsapp  {
+  color:#fff;
+  background:
+   linear-gradient(#25d366,#25d366) 14% 84%/16% 16% no-repeat,
+   radial-gradient(#25d366 58%,transparent 0);
+   font-size: 35px;
+}
+
+.fa-telegram {
+  color: #0088cc;
+  font-size: 30px;
+}
+
+.fa-phone, .fa-envelope, .fa-map-marker-alt {
+  color: #4056a1;
+  font-size: 20px;
+}
+
+.fa-border {
+  border-color: #4056a1;
+  border-radius: 50%;
+}
+
+/* Classes */
+/* Price Specials */
+
+.highlighted-cell {
+  background-color: #4056a122;
+  margin-bottom: 8px;
+  color: #4056a1 !important;
+}
+
+/* Contacts */
+
+.contact-info {
+  color: #31343f;
 }

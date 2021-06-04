@@ -1,26 +1,159 @@
+@media (max-width: 629px) {
+  .navbar-expand-sm .navbar-toggler {
+    display: initial;
+  }
+
+  .collapse:not(.show) {
+    display: none !important;
+  }
+
+  .navbar-expand-sm .navbar-collapse {
+    display: flex;
+    position: absolute;
+    top: 3.5rem;
+    right: 0;
+  }
+
+  .navbar-expand-sm .navbar-nav {
+    flex-direction: column;
+  }
+
+  .nav-link {
+    padding-left: 1rem;
+  }
+}
+
 .adk-navbar {
   width: 100%;
-  height: 2.5rem;            /* Navbar height */
-  background-color: rgb(151, 205, 250);
+  height: 5.5rem;            /* Navbar height */
+  max-height: 5.5rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0rem;
-  box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.2);
+  /*
+  box-shadow: 0px 4px 5px 2px rgb(0 0 0 / 40%);
+  */
 }
 
-.navbar-brand {
-  padding-left: 0.25rem;
-  color: rgb(8, 8, 70);
-  font-size: large;
-  font-weight: bold;
-  margin-right: 0.1rem;
-  margin-left: 0.5rem;
-  padding: 0rem;
+@media (min-width: 0px) and (max-width: 272px) {
+  .adk-navbar {
+    height: 3rem;            /* Navbar height */
+    max-height: 3rem;
+    justify-content: flex-end !important;
+  }
+  .navbar-brand {
+    display: none;
+  }
 }
 
-.navbar-collapse {
-  background-color: rgb(151, 205, 250);
+@media (min-width: 273px) and (max-width: 351px) {
+  .adk-navbar {
+    height: 3rem;            /* Navbar height */
+    max-height: 3rem;
+  }
+  .navbar-brand {
+    padding-left: 0.5rem;
+    margin-right: 0.1rem;
+    margin-left: 1rem;
+    padding: 0rem;
+  }
+
+  .logo {
+    height: 2rem;
+  }
+}
+
+@media (min-width: 352px) and (max-width: 629px) {
+  .adk-navbar {
+    height: 4rem;            /* Navbar height */
+    max-height: 4rem;
+  }
+  .navbar-brand {
+    margin-right: 0.1rem;
+    margin-left: 1rem;
+    padding-left: 0rem;
+    padding-right: 0rem;
+    padding-bottom: 0rem
+  }
+
+  .logo {
+    height: 3rem;
+  }
+}
+
+@media (min-width: 630px) and (max-width: 749px){
+  .adk-navbar {
+    height: 4rem;            /* Navbar height */
+    max-height: 4rem;
+  }
+  .navbar-brand {
+    margin-right: 0.1rem;
+    margin-left: 1rem;
+    padding-left: 0rem;
+    padding-right: 0rem;
+    padding-bottom: 0rem
+  }
+
+  .logo {
+    height: 3rem;
+  }
+  
+  .collapse.show {
+    box-shadow: none !important;
+  }
+
+  .nav-item:last-of-type {
+    padding-right: 1rem;
+  }
+}
+
+@media (min-width: 750px) and (max-width: 899px){
+  .adk-navbar {
+    height: 5rem;            /* Navbar height */
+    max-height: 5rem;
+  }
+  .navbar-brand {
+    margin-right: 0.1rem;
+    margin-left: 1.5rem;
+    padding-left: 0rem;
+    padding-right: 0rem;
+    padding-bottom: 0rem
+  }
+
+  .logo {
+    height: 4rem;
+  }
+  
+  .collapse.show {
+    box-shadow: none !important;
+  }
+
+  .nav-item:last-of-type {
+    padding-right: 1.5rem;
+  }
+}
+
+@media (min-width: 900px) {
+  .navbar-brand {
+    margin-right: 0.1rem;
+    margin-left: 2.5rem;
+    padding-left: 0rem;
+    padding-right: 0rem;
+    padding-bottom: 0rem
+  }
+
+  .logo {
+    height: 4.5rem;
+  }
+  
+  .collapse.show {
+    box-shadow: none !important;
+  }
+
+  .nav-item:last-of-type {
+    padding-right: 4rem;
+  }
 }
 
 .collapse.show {
@@ -28,13 +161,14 @@
 }
 
 .navbar-nav .nav-link {
-  color: rgb(8, 8, 70);
   font-size: medium;
   font-weight: bold;
 }
 
-.nav-item:last-of-type {
-  padding-right: 0.25rem;
+.navbar-nav .nav-link:hover {
+  font-size: medium;
+  font-weight: bold;
+  border-radius: 0.25rem;
 }
 
 .dropdown {
@@ -55,10 +189,9 @@
 }
 
 .dropdown-menu {
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 8px 10px 0px rgba(0,0,0,0.2);
   border-radius: 0.25rem;
   min-width: 100%;
-  background-color: white;
 }
 .dropdown-menu .dropdown-item:first-child {
   border-top-left-radius: 0.25rem;
@@ -71,7 +204,6 @@
 }
 
 .dropdown-menu .dropdown-item {
-  color: rgb(8, 8, 70);
   text-decoration: none;
   text-align: center;
   display: block;
@@ -79,28 +211,14 @@
   font-weight: 500;
 }
 
-.dropdown-item.active, .dropdown-item:active {
-  background-color: #007bff;
-}
-
 .nav-link.logout {
   cursor: pointer;
 }
 
-.navbar-nav .nav-link:hover {
-  color: white;
-  font-size: medium;
-  font-weight: bold;
-  background-color: rgb(146, 196, 236);
-  border-radius: 0.25rem;
-}
-
 @media (hover: hover) {
   .navbar-nav .dropdown:hover .nav-link {
-    color: white;
     font-size: medium;
     font-weight: bold;
-    background-color: rgb(146, 196, 236);
     border-radius: 0.25rem;
   }
 
@@ -114,10 +232,5 @@
 
   .dropdown-closed {
     display: none !important;
-  }
-
-  .dropdown-menu .dropdown-item:hover {
-    background-color: rgb(10, 90, 240);
-    color: white;
   }
 }

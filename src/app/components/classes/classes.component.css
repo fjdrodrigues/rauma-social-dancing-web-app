@@ -1,0 +1,37 @@
+@media (max-width: 768px) {
+  .prices, .class-schedule {
+    margin-top: 1rem !important;
+  }
+}
+
+.class-schedule {
+  display: flex;
+  margin-top: 2rem;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.asterisk {
+  margin: 5px;
+  text-align: justify;
+  color: #31343f;
+}
+
+.prices {
+  margin-top: 2rem;
+}
+
+.prices .adk-col-2 {
+  justify-content: center;
+}
+
+@media (max-width: 550px) {
+  .class-schedule .adk-table-container .adk-table-content {
+    grid-template-columns: 95px auto;
+  }
+
+  .prices .adk-table-container .adk-table-content {
+    grid-template-columns: 165px auto;
+  }
+}
