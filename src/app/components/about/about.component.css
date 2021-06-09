@@ -1,4 +1,105 @@
+.team {
+
+}
+
+.teacher-odd {
+  display: grid;
+  grid-template-columns: auto auto ;
+  grid-template-rows: auto;
+  grid-template-areas: 
+    "photo bio";
+  column-gap: 5px;
+  max-height: 300px;
+  overflow: hidden;
+}
+
+.teacher-odd:not(:first-of-type) {
+  margin-top: 2rem;
+}
+
+.teacher-even {
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: auto auto ;
+  grid-template-rows: auto;
+  grid-template-areas: 
+    "bio photo";
+  column-gap: 5px;
+  max-height: 300px;
+  overflow: hidden;
+}
+
+
 .teacher-pic {
   max-height: 300px;
   max-width: 300px;
+  grid-area: photo;
+}
+
+.teacher-bio {
+  grid-area: bio;
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: auto auto auto;
+  grid-template-areas: 
+    "name"
+    "styles"
+    "description";
+  max-height: 300px;
+  overflow: hidden;
+}
+.teacher-name {
+  grid-area: name;
+  font-weight: 700;
+}
+
+.teacher-styles {
+  grid-area: styles;
+}
+
+.teacher-description {
+  grid-area: description;
+  text-align: justify;
+  max-height: 232px;
+  overflow: hidden scroll;
+}
+
+
+::-webkit-scrollbar {
+  width: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 9999px;
+  background-color: #31343f66;
+}
+
+@media (max-width: 600px) {
+  .teacher-odd, .teacher-even {
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto auto;
+    grid-template-areas: 
+      "photo"
+      "bio";
+    column-gap: 5px;
+    max-height: 600px;
+    overflow: hidden;
+  }
+  
+  .teacher-odd:not(:first-of-type), .teacher-even {
+    margin-top: 1.5rem;
+  }
+
+  .teacher-pic {
+    justify-self: center;
+  }
+
+  .teacher-name {
+    justify-self: center;
+  }
+
+  .teacher-styles {
+    justify-self: center;
+  }
 }

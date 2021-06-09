@@ -2,12 +2,17 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { MatCheckboxModule, MatFormFieldModule, MatProgressSpinnerModule, MatRadioModule,
-         MatSidenavModule, MatTooltipModule, MatDatepickerModule } from '@angular/material';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatChipsModule } from '@angular/material/chips';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatIconModule } from '@angular/material/icon';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 @NgModule({
   imports: [
@@ -34,5 +39,5 @@ import { MatIconModule } from '@angular/material/icon';
     NgSelectModule
   ]
 })
-export class ADKSharedLibsModule {
+export class SharedLibsModule {
 }

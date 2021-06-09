@@ -1,0 +1,24 @@
+.content-header {
+
+}
+
+.dance-style-block {
+  margin-top: 1.5rem;
+}
+
+.dance-style-block:not(:last-of-type) {
+  border-bottom: 2px solid #d79922;
+}
+
+.dance-style-name {
+  margin-bottom: 2rem;
+  font-weight: 700;
+}
+
+.flag {
+  height: 16px;
+}
+
+.dance-style-video {
+ margin-top: 1rem;
+}

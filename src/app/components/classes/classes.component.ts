@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 
 import { PostService } from '../../services/post.service';
 
@@ -14,5 +14,5 @@ export class ClassesComponent extends BasePostComponent {
   constructor(protected postService: PostService) {
 	  super(postService);
   }
-	
+
 }

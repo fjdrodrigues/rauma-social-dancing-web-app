@@ -9,11 +9,11 @@ import { AdminSelectorComponent } from './admin-selector/admin-selector.componen
 import { RouterModule } from '@angular/router';
 import { ActivityComponent } from './activity/activity.component';
 import { PostComponent } from './post/post.component';
-import { ADKSharedLibsModule } from '../shared/shared-libs.module';
+import { SharedLibsModule } from '../shared/shared-libs.module';
 
 @NgModule({
   imports: [
-    ADKSharedLibsModule,
+    SharedLibsModule,
     BrowserModule,
     RouterModule,
     SharedModule

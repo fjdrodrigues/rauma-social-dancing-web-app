@@ -19,7 +19,6 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "assets": [
-              "src/favicon.ico",
               "src/assets"
             ],
             "styles": [
@@ -68,7 +67,7 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "amordkizomba:build"
+            "browserTarget": "amordkizomba:build",
           },
           "configurations": {
             "production": {

@@ -7,24 +7,7 @@ a {
   color: #31343f;
 }
 
-.title {
-  text-align: center;
-  margin-top: 3rem;
-  font-size: xx-large;
-  font-weight: 900;
-  text-transform: uppercase;
-  color: #d79922;
-  text-shadow: 1px 2px 1px #c5cbe3;
-}
-
 @media (min-width: 0px) and (max-width: 550px) {
-  .title {
-    margin-top: 1rem;
-    font-size: x-large;
-    font-weight: 700;
-    text-transform: uppercase;
-  }
-
   .container-fluid {
     padding-left: 0 !important;
     padding-right: 0 !important;
@@ -93,6 +76,12 @@ footer {
   text-shadow: 1px 2px 1px #efe2ba;
 }
 
+.adk-navbar .navbar-collapse .navbar-nav .nav-item .dropdown-menu .dropdown-item.active, .dropdown-item:active {
+  background-color: #4056a166;
+  color: #efe2ba;
+  text-shadow: 1px 1px 1px #31343f;
+}
+
 @media (hover: hover) {
   .adk-navbar .navbar-collapse .navbar-nav .nav-item .dropdown-menu .dropdown-item:hover .nav-link {
     color: #d79922;
@@ -110,12 +99,59 @@ footer {
   }
 }
 
+/* Page Content */
+.page-content {
+  margin-top: 2rem;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+@media (max-width: 768px) {
+  .page-content {
+    margin-top: 1rem !important;
+  }
+}
+/* Title */
+.title {
+  text-align: center;
+  margin-top: 3rem;
+  font-size: xx-large;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: #d79922;
+  text-shadow: 1px 1px 2px #c5cbe3;
+}
+
+@media (min-width: 0px) and (max-width: 550px) {
+  .title {
+    margin-top: 1rem;
+    font-size: x-large;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+}
+
+/* Content */
+.content {
+  margin-top: 2rem;
+}
+
+@media (max-width: 768px) {
+  .content {
+    margin-top: 1rem !important;
+  }
+}
+
+/* Content Text */
+.content-text {
+  text-align: justify;
+}
+
 /* ADK Tables */
 
 .adk-table-container {
   display: flex;
   flex-direction: column;
-  margin: 5px;
   flex: 1 0 0;
   min-width: max-content;
 }
@@ -227,8 +263,8 @@ footer {
 }
 
 .fa-border {
-  border-color: #4056a1;
-  border-radius: 50%;
+  border-color: #4056a1 !important;
+  border-radius: 50% !important;
 }
 
 /* Classes */

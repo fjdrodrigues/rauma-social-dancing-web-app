@@ -6,9 +6,9 @@ import { Component, Injectable, Input } from '@angular/core';
   styleUrls: ['./video.component.css']
 })
 export class VideoComponent {
-  @Input() src: string;
+  @Input() videoSource: string;
+  @Input() adkStyle: string;
 
   constructor() {
-	  
   }
 }

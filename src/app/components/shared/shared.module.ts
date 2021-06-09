@@ -5,18 +5,20 @@ import { VideoComponent } from './video/video.component';
 import { HasAnyRoleDirective } from './security/has-any-role.directive';
 import { TokenStorageService } from './security/token-storage.service';
 import { AlertComponent } from './alert/alert.component';
-import { ADKSharedLibsModule } from './shared-libs.module';
+import { SharedLibsModule } from './shared-libs.module';
+import { SafePipe } from './pipes/safe-pipe.pipe';
 
 @NgModule({
   imports: [
-    ADKSharedLibsModule
+    SharedLibsModule
   ],
   declarations: [
     HasAnyRoleDirective,
     BasePostComponent,
     BaseEventComponent,
     VideoComponent,
-    AlertComponent
+    AlertComponent,
+    SafePipe
   ],
   providers: [
       TokenStorageService,
@@ -25,7 +27,8 @@ import { ADKSharedLibsModule } from './shared-libs.module';
       HasAnyRoleDirective,
       BasePostComponent,
       VideoComponent,
-      AlertComponent
+      AlertComponent,
+      SafePipe
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

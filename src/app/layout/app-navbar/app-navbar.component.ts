@@ -17,7 +17,6 @@ export class AppNavbarComponent implements OnInit {
 
   ngOnInit() {
     this.router.events.subscribe((ev) => {
-      console.log(ev);
         if (ev instanceof NavigationStart) {
           this.isCollapsed = true;
         }
@@ -41,7 +40,6 @@ export class AppNavbarComponent implements OnInit {
   }
 
   public closeDropdown(elem: HTMLDivElement): void {
-    console.log(elem);
     elem.classList.add('dropdown-closed');
       setTimeout(() => {
         elem.classList.remove('dropdown-closed');

@@ -36,6 +36,10 @@
   */
 }
 
+.navbar-expand-sm .navbar-collapse {
+  justify-content: flex-end;
+}
+
 @media (min-width: 0px) and (max-width: 272px) {
   .adk-navbar {
     height: 3rem;            /* Navbar height */
