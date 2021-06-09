@@ -109,6 +109,8 @@ footer {
 @media (max-width: 768px) {
   .page-content {
     margin-top: 1rem !important;
+    margin-left: 10px;
+    margin-right: 10px;
   }
 }
 /* Title */
