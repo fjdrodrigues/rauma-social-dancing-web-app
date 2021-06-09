@@ -40,7 +40,7 @@
   grid-area: bio;
   display: grid;
   grid-template-columns: auto;
-  grid-template-rows: auto auto auto;
+  grid-template-rows: 30px 30px auto;
   grid-template-areas: 
     "name"
     "styles"
@@ -60,7 +60,7 @@
 .teacher-description {
   grid-area: description;
   text-align: justify;
-  max-height: 232px;
+  max-height: 240px;
   overflow: hidden scroll;
 }
 

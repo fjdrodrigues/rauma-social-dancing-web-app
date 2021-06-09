@@ -36,7 +36,7 @@ export class AboutComponent extends BasePostComponent {
   }
 
   @HostListener('scroll', ['$event']) onScroll(event: any) {
-    if (event.target.scrollTop > 0 && event.target.scrollTop < event.target.scrollHeight - 232) {
+    if (event.target.scrollTop > 0 && event.target.scrollTop < event.target.scrollHeight - 240) {
       let element = event.target as HTMLDivElement;
       element.style.boxShadow = "inset 0 12px 10px -7px #31343f66, inset 0 -12px 10px -7px #31343f66";
     } else if (event.target.scrollTop > 0) {
