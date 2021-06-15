@@ -53,6 +53,10 @@
   font-weight: 700;
 }
 
+.flag {
+  height: 20px;
+}
+
 .teacher-styles {
   grid-area: styles;
 }

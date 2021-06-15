@@ -1,19 +1,13 @@
 import { Component, HostListener, OnInit } from '@angular/core';
-import { Scroll } from '@angular/router';
-
-import { PostService } from '../../services/post.service';
-
-import { BasePostComponent } from '../shared/base-post/base-post.component';
 
 @Component({
   selector: 'about',
   templateUrl: './about.component.html',
   styleUrls: ['./about.component.css']
 })
-export class AboutComponent extends BasePostComponent {
+export class AboutComponent implements OnInit {
 	
-  constructor(protected postService: PostService) {
-	  super(postService);
+  constructor() {
   }
 
   ngOnInit() {

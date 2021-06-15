@@ -1,7 +1,6 @@
 import { Component, HostListener, OnInit } from '@angular/core';
-import { NgbModule, NgbDropdown } from '@ng-bootstrap/ng-bootstrap';
 import { TokenStorageService } from '../../components/shared/security/token-storage.service';
-import { Router, RouterModule, NavigationStart, Event, Scroll } from '@angular/router';
+import { Router, NavigationStart, Scroll } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',

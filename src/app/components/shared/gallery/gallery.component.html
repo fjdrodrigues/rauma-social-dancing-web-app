@@ -1,0 +1,15 @@
+<div class="gallery"
+  id="gallery{{index}}">
+
+  <i #arrows class="fas fa-chevron-left left-arrow arrow" (click)="slideLeft()"></i>
+  <i #arrows class="fas fa-chevron-right right-arrow arrow" (click)="slideRight()"></i>
+
+  <adk-video #video *ngFor="let item of items; index as i"
+    class="slide"
+    videoIndex="{{i + index * 10}}"
+    galleryIndex="{{index}}"
+    videoSource="{{ item.url }}"
+    (videoStarted)="videoStarted($event)"
+    (videoStopped)="videoStopped($event)">
+  </adk-video>
+</div>

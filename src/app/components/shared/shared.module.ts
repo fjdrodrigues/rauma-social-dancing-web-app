@@ -2,6 +2,7 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BaseEventComponent } from './base-event/base-event.component';
 import { BasePostComponent } from './base-post/base-post.component';
 import { VideoComponent } from './video/video.component';
+import { GalleryComponent } from './gallery/gallery.component';
 import { HasAnyRoleDirective } from './security/has-any-role.directive';
 import { TokenStorageService } from './security/token-storage.service';
 import { AlertComponent } from './alert/alert.component';
@@ -17,6 +18,7 @@ import { SafePipe } from './pipes/safe-pipe.pipe';
     BasePostComponent,
     BaseEventComponent,
     VideoComponent,
+    GalleryComponent,
     AlertComponent,
     SafePipe
   ],
@@ -27,6 +29,7 @@ import { SafePipe } from './pipes/safe-pipe.pipe';
       HasAnyRoleDirective,
       BasePostComponent,
       VideoComponent,
+      GalleryComponent,
       AlertComponent,
       SafePipe
   ],
