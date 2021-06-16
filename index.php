@@ -3,9 +3,10 @@
 <head>
   <meta charset="utf-8">
   <title>Rauma Social Dancing</title>
-  <base href="/index.php">
+  <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/svg+xml" href="assets/angolan_r.svg">
+  <link rel="icon" type="image/svg+xml"
+	href="https://gist.githubusercontent.com/fjdrodrigues/d41d59729cbbcc4506d1371384c2b2be/raw/c924dafcff99958828bbcc1515b68846d9b7fd08/angolan_r.svg">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
   <link rel="stylesheet" href="styles.css">
 </head>

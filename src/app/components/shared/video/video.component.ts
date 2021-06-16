@@ -9,6 +9,8 @@ export class VideoComponent implements OnInit {
   @Input() videoSource: string;
   @Input() videoIndex: number;
   @Input() galleryIndex: number;
+  @Input() start: number;
+  @Input() end: number;
   @Output() videoStarted = new EventEmitter<any>();
   @Output() videoStopped = new EventEmitter<any>();
   private player;
@@ -25,20 +27,34 @@ export class VideoComponent implements OnInit {
         height: '100%',
         width: '100%',
         videoId: this.videoSource,
+        playerVars: {
+          start: this.start,
+          end: this.end,
+        },
         events: {
           'onReady': this.onPlayerReady,
           'onStateChange': this.onPlayerStateChange.bind(this)
         }
       });
+      console.log(this.player);
     });
       
   }
   
   init() {
-    var tag = document.createElement('script');
-    tag.src = 'https://www.youtube.com/iframe_api';
-    var firstScriptTag = document.getElementsByTagName('script')[0];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    let scriptLoaded = false;
+    for(let i = 0; i < document.getElementsByTagName('script').length; i++) {
+      let htmlScript = document.getElementsByTagName('script')[i];
+      if(htmlScript.src == "https://www.youtube.com/iframe_api"){
+        scriptLoaded = true;
+      }
+    }
+    if(!scriptLoaded) {
+      var tag = document.createElement('script');
+      tag.src = 'https://www.youtube.com/iframe_api';
+      var firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    }
   }
 
   private onPlayerReady(evt) {
