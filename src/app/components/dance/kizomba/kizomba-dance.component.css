@@ -1,0 +1,6 @@
+.gallery-title {
+  margin-top: 1rem;
+}
+.gallery-title:not(:first-of-type) {
+  margin-top: 1.5rem;
+}

@@ -20,6 +20,7 @@
   color: white;
   font-size: x-large;
   cursor: pointer;
+  padding: 0.5rem;
 }
 .arrow:hover {
   color: #ffffffbb;

@@ -1,0 +1,43 @@
+.carousel-grid {
+  display: grid;
+  grid-template: [row1] ". . . . . . ." auto [row1-end]
+    [row2] ". . . title . . ." auto [row2-end]
+    [row3] ". . . . . . ." 0.3rem [row3-end]
+    [row4] ". . description description description . ." auto [row4-end]
+    [row5] ". . . . . . ." 2.5rem [row5-end] / 0.3rem 1fr auto auto auto 1fr 0.3rem;
+}
+.carousel-title, .carousel-description {
+  z-index: 11;
+  text-align: center;
+  color: #4056a1;
+  background-color: #efe2ba;
+  padding: 0 0.2rem 0 0.2rem;
+  text-decoration: none;
+  border-radius: 0.25rem;
+}
+.carousel-title {
+  grid-area: title;
+}
+.carousel-description {
+  grid-area: description;
+}
+.carousel-h3, .carousel-h5 {
+  margin-bottom: 0.3rem;
+}
+.carousel-title .carousel-h3 {
+  line-height: 1;
+  font-weight: 800;
+}
+.carousel-description .carousel-h5 {
+  font-weight: 400;
+}
+.image-link {
+  grid-area: 1 / 1 / 6 / 8;
+  border-radius: 0.25rem;
+}
+.image {
+  z-index: 10;
+  width: 100%;
+  display: block;
+  border-radius: inherit;
+}

@@ -1,0 +1,81 @@
+.carousel {
+  position: relative;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+ol.adk-carousel-indicators {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin-bottom: 1rem;
+  margin-left: 15%;
+  margin-right: 15%;
+  z-index: 11;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  list-style: none;
+  padding-left: 0;
+}
+ol.adk-carousel-indicators li .indicator,
+ol.adk-carousel-indicators li.active .indicator {
+   color: white;
+   padding: 0.3rem;
+   cursor: pointer;
+   font-size: x-large;
+}
+ol.adk-carousel-indicators li .indicator {
+  color: rgba(255,255,255,0.39);
+}
+ol.adk-carousel-indicators li:not(.active) .indicator:hover {
+  color: rgba(255, 255, 255, 0.733);
+} 
+@media (max-width: 767px) {
+  .carousel {
+    width: 100%;
+  }
+}
+.arrow {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: 20% 0 20% 0;
+  display: flex;
+  align-items: center;
+  z-index: 11;
+  color: white;
+  font-size: x-large;
+  cursor: pointer;
+  padding: 0.3rem 0.9rem 0.3rem 0.9rem;
+}
+.arrow:hover {
+  color: #ffffffbb;
+}
+.left-arrow {
+  left: 10px;
+}
+.right-arrow {
+  right: 10px;
+}
+.slide {
+  position: relative;
+  float: left;
+  margin-right: -100%;
+  width: 100%;
+  overflow: hidden;
+  z-index: 10;
+  display: none;
+}
+.carousel-next-item, .carousel-prev-item, .slide.active {
+  display: block;
+}
+.slide:first-of-type{
+  left: 0;
+}
+.carousel-inner {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}

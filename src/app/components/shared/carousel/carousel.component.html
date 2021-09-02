@@ -1,0 +1,28 @@
+<div class="carousel" (mouseover)="hoovered=true" (mouseout)="hoovered=false">
+
+  <i #arrows class="fas fa-chevron-left left-arrow arrow" (click)="slideLeft()"></i>
+  <i #arrows class="fas fa-chevron-right right-arrow arrow" (click)="slideRight()"></i>
+
+  <ol class="adk-carousel-indicators">
+    <li *ngFor="let item of items; index as i" [class.active]="i === selectedIndex"
+        [attr.aria-selected]="i === selectedIndex"
+        (click)="select(i);">
+        <i class="fas fa-minus indicator"></i>
+    </li>
+  </ol>
+
+  <div class="carousel-inner">
+    <adk-carousel-item #carouselItem *ngFor="let item of items; index as i"
+      class="slide"
+      [class.active]="i === selectedIndex"
+      itemIndex="{{i}}"
+      imgSrc="{{item.url}}"
+      title="{{item.title}}"
+      imgHyperlink="{{item.hyperlink}}"
+      description="{{item.description}}"
+      (touchstart)="swipe($event, 'start')"
+      (touchmove)="moveItem($event)"
+      (touchend)="swipe($event, 'end')">
+    </adk-carousel-item>
+  </div>
+</div>

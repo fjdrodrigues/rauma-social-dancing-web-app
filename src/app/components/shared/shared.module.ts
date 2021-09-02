@@ -8,6 +8,8 @@ import { TokenStorageService } from './security/token-storage.service';
 import { AlertComponent } from './alert/alert.component';
 import { SharedLibsModule } from './shared-libs.module';
 import { SafePipe } from './pipes/safe-pipe.pipe';
+import { CarouselComponent } from './carousel/carousel.component';
+import { CarouselItemComponent } from './carousel-item/carousel-item.component';
 
 @NgModule({
   imports: [
@@ -19,6 +21,8 @@ import { SafePipe } from './pipes/safe-pipe.pipe';
     BaseEventComponent,
     VideoComponent,
     GalleryComponent,
+    CarouselComponent,
+    CarouselItemComponent,
     AlertComponent,
     SafePipe
   ],
@@ -30,6 +34,8 @@ import { SafePipe } from './pipes/safe-pipe.pipe';
       BasePostComponent,
       VideoComponent,
       GalleryComponent,
+      CarouselComponent,
+      CarouselItemComponent,
       AlertComponent,
       SafePipe
   ],

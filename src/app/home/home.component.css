@@ -1,0 +1,16 @@
+@media all and (orientation:portrait) {
+  .horizontal {
+    display: none;
+  }
+  .vertical {
+    display: block;
+  }
+}
+@media all and (orientation:landscape) {
+  .horizontal {
+    display: block;
+  }
+  .vertical {
+    display: none;
+  }
+}

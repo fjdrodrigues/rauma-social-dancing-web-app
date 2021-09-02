@@ -10,7 +10,7 @@
   margin-left: 10px;
 }
 
-.phone-block, .email-block {
+.phone-block, .whatsapp-group-block .email-block {
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -20,7 +20,7 @@
   text-decoration-line: underline;
 }
 
-.email-block, .location-block {
+.whatsapp-group-block, .email-block, .location-block {
   margin-top: 2rem;
 }
 

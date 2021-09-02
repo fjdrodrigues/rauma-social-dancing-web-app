@@ -60,16 +60,16 @@ export class GalleryComponent implements OnInit, AfterViewInit {
       .elementRef.nativeElement as HTMLElement;
       previousVideo.animate([
       { left: '0' },
-      { left: '-100%' }
+      { left: '100%' }
     ], {
       duration: 500,
       fill: "forwards"
     });
     let newVideo = this.videos.find(video => video.videoIndex == this.selectedIndex+10*this.index)
       .elementRef.nativeElement as HTMLElement;
-    newVideo.style.left = "100%";
+    newVideo.style.left = "-100%";
     newVideo.animate([
-      { left: '100%' },
+      { left: '-100%' },
       { left: '0' }
     ], {
       duration: 500,
@@ -85,16 +85,16 @@ export class GalleryComponent implements OnInit, AfterViewInit {
       .elementRef.nativeElement as HTMLElement;
     previousVideo.animate([
       { left: '0' },
-      { left: '100%' }
+      { left: '-100%' }
     ], {
       duration: 500,
       fill: "forwards"
     });
     let newVideo = this.videos.find(video => video.videoIndex == this.selectedIndex+10*this.index)
       .elementRef.nativeElement as HTMLElement;
-    newVideo.style.left = "-100%";
+    newVideo.style.left = "100%";
     newVideo.animate([
-      { left: '-100%' },
+      { left: '100%' },
       { left: '0' }
     ], {
       duration: 500,

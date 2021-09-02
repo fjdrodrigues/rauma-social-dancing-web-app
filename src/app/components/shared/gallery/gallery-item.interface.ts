@@ -7,5 +7,7 @@ export interface GalleryItem {
   itemType: GalleryItemType,
   url: string,
   title: string,
-  description: string
+  description: string,
+  start?: number,
+  end?: number
 }

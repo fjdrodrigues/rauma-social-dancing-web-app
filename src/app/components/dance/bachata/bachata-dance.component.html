@@ -3,9 +3,27 @@
     <span>Bachata</span>
   </div>
   <div class="content">
-
-    <adk-gallery [items]="modernBachataVideos" index="0"></adk-gallery>
-    <adk-gallery [items]="dominicanBachataVideos" index="1"></adk-gallery>
+    <div class="intro">
+      <span>Bachata is a dance form which originated in the Dominican Republic in the second half
+        of the 20th century. It has its roots in Bolero and is traditionally danced in a square.<br>
+        Its expansion to the Western civilisation brought influences from Salsa and Ballroom dances, and,
+        consequently, the creation of <b>Modern Bachata</b>, which is danced side to side and involves turning
+        patterns and dips. <br>
+        Eventually, influences from Brazilian Zouk led to the creation of a widely popular dance style,
+        <b>Bachata Sensual</b>, which includes body waves, body isolations and dips.
+      </span>
+    </div>
+    <div class="gallery-title">
+      <h5>Traditional/Dominican Bachata</h5>
+    </div>
+    <adk-gallery [items]="dominicanBachataVideos" index="0"></adk-gallery>
+    <div class="gallery-title">
+      <h5>Modern Bachata</h5>
+    </div>
+    <adk-gallery [items]="modernBachataVideos" index="1"></adk-gallery>
+    <div class="gallery-title">
+      <h5>Sensual Bachata</h5>
+    </div>
     <adk-gallery [items]="sensualBachataVideos" index="2"></adk-gallery>
   </div>
 </div>
