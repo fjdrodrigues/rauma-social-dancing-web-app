@@ -11,6 +11,15 @@
   flex-wrap: wrap;
   justify-content: center;
 }
+.all-level-classes {
+  background-color: #f1b7b7;
+}
+.beginner-classes {
+  background-color: #f3e795;
+}
+.intermediate-classes {
+  background-color: #c5cbe3;
+}
 .asterisk {
   margin-top: 5px;
   text-align: justify;
@@ -18,6 +27,23 @@
 }
 .class-schedule .adk-table-container {
   margin: 5px;
+}
+.class-levels {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: row;
+}
+.level-indicator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1px 5px 1px 5px;
+}
+.class-level-box {
+  width: 2.2rem;
+  height: 1.5rem;
+  margin-right: 3px;
+  box-shadow: inset 0px 0px 2px 0px #4056a1;
 }
 .prices .adk-col-2 {
   justify-content: center;
