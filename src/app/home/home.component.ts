@@ -13,8 +13,8 @@ export class HomeComponent {
 		{
 			verticalURL: "https://i.ibb.co/tBvbpcV/collage-1-800x1000.png",
 			horizontalURL: "https://i.ibb.co/Rp1YXn8/collage-1-900x425.png",
-			title: "Update for October",
-			description: "Kizomba classes on Mondays",
+			title: "In November",
+			description: "Classes on Mondays and Wednesdays start earlier",
       hyperlink: environment.baseUrl+"/classes"
 		},
 		{
