@@ -11,7 +11,7 @@
   <meta property="og:title" content="Rauma Social Dancing"/>
   <meta property="og:description" content="Rauma based social dancing promoters with fun and accessible classes."/>
   <link rel="icon" type="image/svg+xml"
-	href="https://gist.githubusercontent.com/fjdrodrigues/d41d59729cbbcc4506d1371384c2b2be/raw/c924dafcff99958828bbcc1515b68846d9b7fd08/angolan_r.svg">
+	href="https://gist.githubusercontent.com/fjdrodrigues/b85a307811f2c69c9732969005819ace/raw/d11b58cd98cecad0fadae804e3465ea56ab08e61/angola_r.svg">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
   <link rel="stylesheet" href="styles.css">
 </head>
