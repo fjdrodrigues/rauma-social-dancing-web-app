@@ -2,11 +2,7 @@
   <div *adkHasAnyRole="'admin'" class="row">
     <adk-admin-selector></adk-admin-selector>
   </div>
-  <div class="note">
-    <p style="margin-bottom: 0">
-      <b>Note:</b> <br>
-      No activities on 05.11, 19.11, 21.11 and 22.11.</p>
-  </div>
+  <div class="note" [innerHTML]="'note.current' | translate"></div>
 
   <adk-events-comingup></adk-events-comingup>
   <adk-photo-album></adk-photo-album>

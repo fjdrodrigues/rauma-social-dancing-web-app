@@ -1,4 +1,4 @@
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from  '@angular/forms';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
@@ -33,6 +33,12 @@ import { AdminModule } from './components/admin/admin.module';
 import { LayoutModule } from './layout/layout.module';
 import { AuthInterceptorProviders } from './components/shared/security/auth.interceptor';
 import { BaseComponent } from './core/base.component';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
 
 @NgModule({
   declarations: [
@@ -65,7 +71,15 @@ import { BaseComponent } from './core/base.component';
     AppRoutingModule,
     LayoutModule,
     AdminModule,
-		SharedModule
+		SharedModule,
+    TranslateModule.forRoot({
+      loader: {
+          provide: TranslateLoader,
+          useFactory: HttpLoaderFactory,
+          deps: [HttpClient]
+      },
+      defaultLanguage: 'en'
+  })
   ],
   providers: [
     { provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: { useUtc: true } },

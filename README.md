@@ -1,4 +1,3 @@
-# amordkizomba.github.io
 Amor d' Kizomba - Web App
 
 # Frontend
@@ -68,17 +67,11 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 
-mysql -u admin -p adk (adkpass123)
-
 Rauma Social Dance logo:
 Width: 406.03px
 Height: 78.83px
 Colour: #f8f1f1
 
-Rauma Social Dance colours:
-Text: #f8f1f1
-navbar: #ff0707
-Background: #000000
 
 #d79922 - gold
 #efe2ba - dutch white
@@ -87,8 +80,4 @@ Background: #000000
 #c5cbe3 - light violet/blue
 #31343f - Grey
 ------------
-#b23850 - Dark Red
-#3b8beb - Blue
 #f8f1f1 - Dark White
-#c4dbf6 - Cyan Blue
-#8590aa - Dark Grey

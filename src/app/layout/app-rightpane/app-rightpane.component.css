@@ -1,0 +1,12 @@
+.whatsapp-group-block {
+  margin-top: 2rem;
+  margin-left: 3px;
+  margin-right: 3px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+.facebook-block {
+  margin-top: 1rem;
+  text-align: center;
+}

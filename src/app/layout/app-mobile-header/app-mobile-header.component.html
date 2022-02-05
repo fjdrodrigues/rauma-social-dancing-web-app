@@ -3,13 +3,15 @@
     <div *adkHasAnyRole="'admin'" class="row">
       <adk-admin-selector></adk-admin-selector>
     </div>
-    <!--
-    <div class="note">
-      <p style="margin-bottom: 0">
-        <b>Note:</b> <br>
-        Social on Friday 01.10 is cancelled, as there is another social at Domino (19:00-22:30).</p>
+    <div class="whatsapp-group-block">
+      <a href="https://chat.whatsapp.com/JKGNm4sN3Au6yCPJG4KmWe" target="_blank" class="contact-item">
+        <i class="fab fa-whatsapp contact-icon" aria-hidden="true"></i>
+      </a>
+      <a href="https://chat.whatsapp.com/JKGNm4sN3Au6yCPJG4KmWe" target="_blank" class="contact-item">
+        <span class="contact-item">Join our Whatsapp Group!</span>
+      </a>
     </div>
-  -->
+    <div class="note" [innerHTML]="'note.current' | translate"></div>
     <adk-events-comingup></adk-events-comingup>
   </div>
 </div>
