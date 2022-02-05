@@ -91,6 +91,7 @@ footer {
   margin-top: 2rem;
   margin-left: 5px;
   margin-right: 5px;
+  margin-bottom: 0.5rem;
 }
 @media (max-width: 768px) {
   .page-content {
@@ -179,12 +180,12 @@ footer {
 .adk-table-container {
   background-color: #c5cbe366;
   border-radius: 10px;
-  box-shadow: inset 0px 0px 3px 0px #4056a1;
+  box-shadow: inset 0px 0px 3px 0px #c5cbe3;
 }
 .adk-table-container .adk-table-top-header, .adk-table-container .adk-table-middle-header {
   border-bottom: 1px solid #efe2ba;
-  background-color: #4056a1;
-  color: #c5cbe3;
+  background-color: #c5cbe3;
+  color: #4056a1;
 }
 .adk-table-container .adk-table-top-header {
   border-top-left-radius: 10px;
