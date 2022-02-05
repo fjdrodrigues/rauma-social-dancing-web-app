@@ -34,8 +34,10 @@ footer {
   background-color: #efe2ba;
   border-top: #d79922;
 }
-.main-content {
-  min-height: inherit;
+@media (min-width: 768px) {
+  .main-content {
+    min-height: inherit;
+  }
 }
 .main-container {
   background-color: #efe2ba;
@@ -51,10 +53,10 @@ footer {
   color: #4056a1;
   font-size: 28px;
 }
-.adk-navbar .navbar-collapse .navbar-nav .nav-link {
+.adk-navbar .navbar-collapse .navbar-nav .nav-link, .adk-navbar .navbar-collapse .navbar-nav .nav-lang {
   color: #4056a1;
 }
-.adk-navbar .navbar-collapse .navbar-nav .nav-link:hover {
+.adk-navbar .navbar-collapse .navbar-nav .nav-link:hover, .adk-navbar .navbar-collapse .navbar-nav .nav-lang:hover {
   color: #d79922;
   text-shadow: 1px 1px 1px #c5cbe3;
 }
@@ -223,6 +225,10 @@ footer {
 }
 .fa-telegram {
   color: #0088cc;
+  font-size: 30px;
+}
+.fa-facebook {
+  color: #4267B2;
   font-size: 30px;
 }
 .fa-phone, .fa-envelope, .fa-map-marker-alt {

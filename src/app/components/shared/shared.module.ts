@@ -10,6 +10,7 @@ import { SharedLibsModule } from './shared-libs.module';
 import { SafePipe } from './pipes/safe-pipe.pipe';
 import { CarouselComponent } from './carousel/carousel.component';
 import { CarouselItemComponent } from './carousel-item/carousel-item.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
@@ -37,7 +38,8 @@ import { CarouselItemComponent } from './carousel-item/carousel-item.component';
       CarouselComponent,
       CarouselItemComponent,
       AlertComponent,
-      SafePipe
+      SafePipe,
+      TranslateModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

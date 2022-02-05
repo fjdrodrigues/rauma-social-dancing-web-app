@@ -1,5 +1,11 @@
+.whatsapp-group-block {
+  text-align: center;
+}
 .note {
+  margin-top: 1rem;
   margin-left: 3px;
+  margin-right: 3px;
+  margin-bottom: 0;
   padding: 1px;
   border: #d79922;
   border-style: dotted;

@@ -1,6 +1,7 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { TokenStorageService } from '../../components/shared/security/token-storage.service';
 import { Router, NavigationStart, Scroll } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-navbar',
@@ -12,7 +13,8 @@ export class AppNavbarComponent implements OnInit {
 
   
   constructor(private tokenStorageService: TokenStorageService,
-    private router: Router) { }
+    private router: Router,
+    public translate: TranslateService) { }
 
   ngOnInit() {
     this.router.events.subscribe((ev) => {
@@ -43,6 +45,10 @@ export class AppNavbarComponent implements OnInit {
       setTimeout(() => {
         elem.classList.remove('dropdown-closed');
       }, 150);    
+  }
+
+  public setLanguage(language: string): void {
+    this.translate.use(language);
   }
 
   public logout(): void {

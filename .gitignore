@@ -100,6 +100,7 @@ speed-measure-plugin*.json
 !.vscode/launch.json
 !.vscode/extensions.json
 .history/*
+*.code-workspace
 
 # misc
 /.sass-cache
@@ -117,3 +118,4 @@ Thumbs.db
 
 # Personal
 token.txt
+password.txt
