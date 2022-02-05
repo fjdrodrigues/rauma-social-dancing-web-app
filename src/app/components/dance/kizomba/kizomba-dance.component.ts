@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
-import { Post } from '../../../domain/post.interface';
 import { GalleryItem, GalleryItemType } from '../../shared/gallery/gallery-item.interface';
 
 @Component({
@@ -8,12 +7,8 @@ import { GalleryItem, GalleryItemType } from '../../shared/gallery/gallery-item.
   templateUrl: './kizomba-dance.component.html',
   styleUrls: ['./kizomba-dance.component.css']
 })
-export class KizombaDanceComponent implements OnInit {
-	/*
-	public posts: Post[];
-	public post: Post;
-	private category = "kizomba";
-	*/
+export class KizombaDanceComponent {
+
 	public kizombaVideos: Array<GalleryItem> = [
 		{
 			itemType: GalleryItemType.video,
@@ -68,14 +63,4 @@ export class KizombaDanceComponent implements OnInit {
   constructor() {
 		
   }
-	
-	ngOnInit() {
-		/*this.postService.getAllFromCategory(this.category).subscribe((posts: Post[]) => {
-				this.posts = posts;
-			});
-		this.postService.testPost(1).subscribe((post: Post) => {
-			this.post = post;
-		});
-		*/
-	}
 }

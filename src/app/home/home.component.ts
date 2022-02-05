@@ -13,29 +13,29 @@ export class HomeComponent {
 		{
 			verticalURL: "https://i.ibb.co/tBvbpcV/collage-1-800x1000.png",
 			horizontalURL: "https://i.ibb.co/Rp1YXn8/collage-1-900x425.png",
-			title: "In November",
-			description: "Classes on Mondays and Wednesdays start earlier",
+			title: "2022",
+			description: "Classes on Sundays and Mondays for Beginners and more Advanced dancers",
       hyperlink: environment.baseUrl+"/classes"
 		},
 		{
 			verticalURL: "https://i.ibb.co/Dtg04P7/collage-2-800x1000.png",
 			horizontalURL: "https://i.ibb.co/fDxJNhC/collage-2-900x425.png",
-			title: "Beginner Classes",
-			description: "Solo Salsa, Couple Salsa and Couple Bachata classes on Tuesdays",
+			title: "Salsa & Bachata",
+			description: "Couple classes on Sundays",
       hyperlink: environment.baseUrl+"/classes"
 		},
 		{
 			verticalURL: "https://i.ibb.co/mbKcM8G/collage-3-800x1000.png",
 			horizontalURL: "https://i.ibb.co/F6D1Vs4/collage-3-900x425.png",
-			title: "Intermediate Classes",
-			description: "Salsa and Bachata classes on Wednesdays",
+			title: "Kizomba & Semba",
+			description: "Couple classes on Mondays",
       hyperlink: environment.baseUrl+"/classes"
 		},
 		{
 			verticalURL: "https://i.ibb.co/sm6jqht/social-2021-06-17-960x1200.png",
 			horizontalURL: "https://i.ibb.co/R2CpHW2/social-2021-06-17-900x425.png",
 			title: "Socials",
-			description: "Every Friday and Sunday",
+			description: "Every 2nd Friday",
       hyperlink: environment.baseUrl+"/classes"
 		}
 	];

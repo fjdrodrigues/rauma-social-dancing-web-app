@@ -11,7 +11,6 @@ import { NgSelectModule } from '@ng-select/ng-select';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { environment } from '../environments/environment';
 
 
 import { AboutComponent } from './components/about/about.component';
@@ -21,18 +20,11 @@ import { BachataDanceComponent } from './components/dance/bachata/bachata-dance.
 import { CubanSalsaDanceComponent } from './components/dance/cuban-salsa/cuban-salsa-dance.component';
 import { OtherDanceComponent } from './components/dance/other/other-dance.component';
 import { ClassesComponent } from './components/classes/classes.component';
-import { HealthComponent } from './components/health/health.component';
-import { BodyHealthComponent } from './components/health/body/body-health.component';
-import { MindHealthComponent } from './components/health/mind/mind-health.component';
 import { ContactsComponent } from './components/contacts/contacts.component';
 import { HomeComponent } from './home/home.component';
 
 import { SharedModule } from './components/shared/shared.module';
-import { AuthGuard } from './components/shared/security/auth-guard';
-import { AdminModule } from './components/admin/admin.module';
 import { LayoutModule } from './layout/layout.module';
-import { AuthInterceptorProviders } from './components/shared/security/auth.interceptor';
-import { BaseComponent } from './core/base.component';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
@@ -51,11 +43,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     CubanSalsaDanceComponent,
     OtherDanceComponent,
     ClassesComponent,
-		HealthComponent,
-		BodyHealthComponent,
-    MindHealthComponent,
-    ContactsComponent,
-    BaseComponent
+    ContactsComponent
   ],
   imports: [
     BrowserModule,
@@ -70,7 +58,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     NgbDropdownModule,
     AppRoutingModule,
     LayoutModule,
-    AdminModule,
 		SharedModule,
     TranslateModule.forRoot({
       loader: {
@@ -83,9 +70,7 @@ export function HttpLoaderFactory(http: HttpClient) {
   ],
   providers: [
     { provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: { useUtc: true } },
-    { provide: MAT_DATE_LOCALE, useValue: 'en-GB'},
-    AuthGuard,
-    AuthInterceptorProviders
+    { provide: MAT_DATE_LOCALE, useValue: 'en-GB'}
   ],
   bootstrap: [AppComponent],
   schemas: [

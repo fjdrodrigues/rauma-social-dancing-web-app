@@ -14,7 +14,6 @@ import { AppLeftPaneComponent } from './app-leftpane/app-leftpane.component';
 import { AppRightPaneComponent } from './app-rightpane/app-rightpane.component';
 import { AppFooterComponent } from './app-footer/app-footer.component';
 import { SharedModule } from '../components/shared/shared.module';
-import { AdminModule } from '../components/admin/admin.module';
 import { AppMobileFooterComponent } from './app-mobile-footer/app-mobile-footer.component';
 
 @NgModule({
@@ -28,7 +27,6 @@ import { AppMobileFooterComponent } from './app-mobile-footer/app-mobile-footer.
       MatMomentDateModule,
       BrowserAnimationsModule,
       NgbDropdownModule,
-      AdminModule,
       SharedModule,
       RouterModule
     ],
