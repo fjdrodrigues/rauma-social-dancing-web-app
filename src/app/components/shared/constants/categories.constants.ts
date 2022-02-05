@@ -1,1 +1,0 @@
-export const CATEGORIES = ['Class', 'Workshop', 'Festival', 'Party', 'Sports', 'Development'];

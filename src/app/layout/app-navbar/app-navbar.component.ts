@@ -1,5 +1,4 @@
 import { Component, HostListener, OnInit } from '@angular/core';
-import { TokenStorageService } from '../../components/shared/security/token-storage.service';
 import { Router, NavigationStart, Scroll } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 
@@ -12,8 +11,12 @@ export class AppNavbarComponent implements OnInit {
   public isCollapsed = true;
 
   
+<<<<<<< HEAD
   constructor(private tokenStorageService: TokenStorageService,
     private router: Router,
+=======
+  constructor(private router: Router,
+>>>>>>> master
     public translate: TranslateService) { }
 
   ngOnInit() {
@@ -49,10 +52,13 @@ export class AppNavbarComponent implements OnInit {
 
   public setLanguage(language: string): void {
     this.translate.use(language);
+<<<<<<< HEAD
   }
 
   public logout(): void {
     this.tokenStorageService.signOut();
     this.router.navigate([`/`]);
+=======
+>>>>>>> master
   }
 }

@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnInit, QueryList, ViewChildren, AfterViewInit, ContentChildren, AfterContentInit, HostListener, ViewChild} from '@angular/core';
+import { Component, ElementRef, Input, OnInit, QueryList, ViewChildren, AfterViewInit } from '@angular/core';
 import { VideoComponent } from '../video/video.component';
 import { GalleryItem, GalleryItemType } from './gallery-item.interface';
 
