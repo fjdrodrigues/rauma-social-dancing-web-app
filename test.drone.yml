@@ -9,3 +9,20 @@ steps:
   - touch test-output.txt
   - echo hello world! > test-output.txt
   - pwd
+
+- name: build
+  image: node:14.17.0
+  commands:
+  - npm install
+  - npm run build --prod
+
+- name: publish
+  image: plugins/docker
+  settings:
+    username: 
+      from_secret: docker-hub-username
+    password:
+      from_secret: docker-hub-password
+    repo: fjdrodrigues/rauma-social-dancing-web-app
+    tags:
+    - 0.1.1
