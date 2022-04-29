@@ -7,5 +7,5 @@ steps:
   image: alpine
   commands:
   - touch test-output.txt
-  - echo hello > test-output.txt
+  - echo hello world! > test-output.txt
   - echo world
