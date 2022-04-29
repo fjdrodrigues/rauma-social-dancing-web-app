@@ -8,4 +8,4 @@ steps:
   commands:
   - touch test-output.txt
   - echo hello world! > test-output.txt
-  - echo world
+  - pwd
