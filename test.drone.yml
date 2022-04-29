@@ -8,7 +8,6 @@ steps:
   commands:
   - touch test-output.txt
   - echo hello world! > test-output.txt
-  - pwd
 
 - name: build
   image: node:14.17.0
