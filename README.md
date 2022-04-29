@@ -1,12 +1,40 @@
-Amor d' Kizomba - Web App
+Rauma Social Dancing - Web App
+
+# Current Versions - Working
+Angular CLI: 12.2.17
+Node: 14.17.0
+Package Manager: npm 6.14.13
+
+Angular: 12.2.16
+... animations, common, compiler, compiler-cli, core, forms
+... language-service, localize, platform-browser
+... platform-browser-dynamic, router
+
+Package                            Version
+------------------------------------------------------------
+@angular-devkit/architect          0.1202.17
+@angular-devkit/build-angular      12.2.17
+@angular-devkit/core               12.2.17
+@angular-devkit/schematics         12.2.17
+@angular/cdk                       12.2.13
+@angular/cli                       12.2.17
+@angular/material                  12.2.13
+@angular/material-moment-adapter   12.2.13
+@schematics/angular                12.2.17
+rxjs                               6.6.7
+typescript                         4.2.4
+
 
 # Frontend
 # Install Node JS
 Download & Install
 # Install Angular
  - npm install -g @angular/cli
- - cd ~/amordkizomba
+ - cd ~/rauma-social-dancing-web-app
  - run npm install
+# Install Dependencies (inside the project directory)
+ - sudo npm install @ngx-translate/http-loader --save
+ - sudo npm install @ngx-translate/core --save
 
 # Backend
 # Install MySQL 5.7
@@ -38,8 +66,13 @@ extension=php_xmlrpc.dll
     LoadModule php7_module "C:/php7.1/php7apache2_4.dll"
     AddType application/x-httpd-php .php
     PHPIniDir "C:/php7.1"
+# .htacess file
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ / [L]
 
-# Amordkizomba
+# Rauma Social Dancing
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.4.
 
