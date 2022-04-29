@@ -24,5 +24,3 @@ steps:
     password:
       from_secret: docker-hub-password
     repo: fjdrodrigues/rauma-social-dancing-web-app
-    tags:
-    - 0.1.1
