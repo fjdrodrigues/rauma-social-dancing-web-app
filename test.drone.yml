@@ -1,0 +1,11 @@
+kind: pipeline
+type: docker
+name: test-pipeline
+
+steps:
+- name: greeting
+  image: alpine
+  commands:
+  - touch test-output.txt
+  - echo hello > test-output.txt
+  - echo world
