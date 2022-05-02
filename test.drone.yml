@@ -17,7 +17,6 @@ steps:
   image: node:14.17.0
   commands:
   - npm install
-  - export NODE_OPTIONS="--max-old-space-size=2048"
 
 - name: rebuild-cache
   image: drillster/drone-volume-cache
