@@ -13,6 +13,13 @@ steps:
     mount:
       - ./node_modules
 
+- name: build
+  image: node:14.17.0
+  commands:
+  - npm install
+  - export NODE_OPTIONS="--max-old-space-size=2048"
+  - npm run build --prod
+
 - name: rebuild-cache
   image: drillster/drone-volume-cache
   volumes:
@@ -23,17 +30,7 @@ steps:
     mount:
       - ./node_modules
 
-- name: build
-  image: node:14.17.0
-  commands:
-  - npm install
-  - export NODE_OPTIONS="--max-old-space-size=2048"
-  - npm run build --prod
-
-- name: publish
-  image: plugins/docker
-  settings:
-    username: fjdrodrigues
-    password: ElGato_1993
-    repo: fjdrodrigues/rauma-social-dancing-web-app
-    tags: latest
+volumes:
+- name: cache
+  host:
+    path: /tmp/drone/cache
