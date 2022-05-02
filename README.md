@@ -115,6 +115,12 @@ Colour: #f8f1f1
 ------------
 #f8f1f1 - Dark White
 
+## AWS EC2 Instance
+
+# SSH
+ssh -i "aws-ec2-key.pem" ec2-user@ec2-13-51-252-248.eu-north-1.compute.amazonaws.com
+(-o ServerAliveInterval=120) or .ssh/config
+
 ## Deploy Using Drone
 
 # Caddy - Reverse Proxy
