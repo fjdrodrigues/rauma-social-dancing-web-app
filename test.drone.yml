@@ -3,11 +3,25 @@ type: docker
 name: test-pipeline
 
 steps:
-- name: greeting
-  image: alpine
-  commands:
-  - touch test-output.txt
-  - echo hello world! > test-output.txt
+- name: restore-cache
+  image: drillster/drone-volume-cache
+  volumes:
+  - name: cache
+    path: /cache
+  settings:
+    restore: true
+    mount:
+      - ./node_modules
+
+- name: rebuild-cache
+  image: drillster/drone-volume-cache
+  volumes:
+  - name: cache
+    path: /cache
+  settings:
+    rebuild: true
+    mount:
+      - ./node_modules
 
 - name: build
   image: node:14.17.0
@@ -19,8 +33,12 @@ steps:
 - name: publish
   image: plugins/docker
   settings:
-    username: 
-      from_secret: docker-hub-username
-    password:
-      from_secret: docker-hub-password
+    username: fjdrodrigues
+    password: ElGato_1993
     repo: fjdrodrigues/rauma-social-dancing-web-app
+    tags: latest
+
+volumes:
+  - name: cache
+    host: 
+      path: /tmp/cache
