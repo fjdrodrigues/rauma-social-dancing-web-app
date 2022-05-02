@@ -12,6 +12,7 @@ steps:
     restore: true
     mount:
       - ./node_modules
+      
 
 - name: build
   image: node:14.17.0
