@@ -37,8 +37,3 @@ steps:
     password: ElGato_1993
     repo: fjdrodrigues/rauma-social-dancing-web-app
     tags: latest
-
-volumes:
-  - name: cache
-    host: 
-      path: /tmp/cache
