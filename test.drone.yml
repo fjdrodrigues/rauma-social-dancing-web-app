@@ -34,8 +34,10 @@ steps:
 - name: publish
   image: plugins/docker
   settings:
-    username: fjdrodrigues
-    password: ElGato_1993
+    username:
+      from_secret: docker_username
+    password:
+      from_secret: docker_password
     repo: fjdrodrigues/rauma-social-dancing-web-app
     tags: latest
 
