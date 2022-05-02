@@ -114,3 +114,63 @@ Colour: #f8f1f1
 #31343f - Grey
 ------------
 #f8f1f1 - Dark White
+
+## Deploy Using Drone
+
+# Caddy - Reverse Proxy
+Caddyfile:
+
+http://13.51.252.248.nip.io:8080 {
+	reverse_proxy localhost:8081
+}
+13.51.252.248.nip.io:8443 {
+	reverse_proxy localhost:8444
+}
+13.51.252.248.nip.io:7000 {
+	reverse_proxy localhost:7001
+}
+
+Run: sudo caddy start > caddy_server.log 2>&1 &
+
+# Drone:
+docker run  \
+  --volume=/var/lib/drone:/data  \
+  --env=DRONE_GITHUB_CLIENT_ID=SECRET_ID \
+  --env=DRONE_GITHUB_CLIENT_SECRET=SUÅPER_SECRET \
+  --env=DRONE_RPC_SECRET=VERY_SECRET \
+  --env=DRONE_SERVER_HOST=13.51.252.248.nip.io\
+  --env=DRONE_SERVER_PROTO=http \
+  --env=DRONE_USER_CREATE=username:fjdrodrigues,admin:true \
+  --publish=8081:80 \
+  --publish=8444:443 \
+  --restart=always \
+  --detach=true \
+  --name=drone-github \
+  drone/drone
+  
+# Drone Linux Runner:
+docker run --detach \
+  --volume=/var/run/docker.sock:/var/run/docker.sock \
+  --env=DRONE_RPC_PROTO=http \
+  --env=DRONE_RPC_HOST=13.51.252.248.nip.io:8080 \
+  --env=DRONE_RPC_SECRET=VERY_SECRET  \
+  --env=DRONE_RUNNER_CAPACITY=2 \
+  --env=DRONE_RUNNER_NAME=github-runner \
+  --publish=3000:3000 \
+  --restart=always \
+  --name=github-runner \
+  drone/drone-runner-docker
+
+# Run once
+sudo docker run --detach \
+	--publish=7001:80 \
+	--name=rauma-social-dancing-web-app \
+	fjdrodrigues/rauma-social-dancing-web-app
+
+# Watchtower
+docker run -d \
+    --name watchtower \
+	-v /var/run/docker.sock:/var/run/docker.sock \
+    containrrr/watchtower \
+	-i=60 \
+	rauma-social-dancing-web-app
